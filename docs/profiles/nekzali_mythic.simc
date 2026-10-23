@@ -1,0 +1,88 @@
+# Nek'zali the Soulcoiler (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (249-374 s kills).
+# Kill length: median of 1000 ranked guild kills (each guild's best) = 342 s (10th pct 288, 90th 370). Set your own here:
+max_time=342
+vary_combat_length=0.05
+
+# Bosses (all attackable at once unless an event below says otherwise)
+enemy=Nek_zali_the_Soulcoiler
+enemy=Echo_of_Jawae
+enemy=Drowned_Echo
+
+# Adds: spawn = first hit on the wave, duration = first hit to last hit (median), count = median wave size
+# Exposure (count x duration) calibrated x0.447: simc has no positions, so every area spell reaches every add.
+# This makes the share of damage that goes into adds match real players of the same spec. Measured values: boss page.
+# Restless Amani x3: 30/30 kills, spawn +-1s
+raid_events+=/adds,name=Restless_Amani_1,count=3,first=56,duration=9.7,cooldown=9999,health=1e10
+# Restless Amani x3: 15/30 kills, spawn +-1.5s
+raid_events+=/adds,name=Restless_Amani_2,count=3,first=113.4,duration=11.4,cooldown=9999,health=1e10
+# Restless Amani x3: 30/30 kills, spawn +-1.9s
+raid_events+=/adds,name=Restless_Amani_3,count=3,first=170,duration=11.9,cooldown=9999,health=1e10
+# Restless Amani x3: 19/30 kills, spawn +-6.7s
+raid_events+=/adds,name=Restless_Amani_4,count=3,first=212.3,duration=9.5,cooldown=9999,health=1e10
+# Restless Amani x3: 30/30 kills, spawn +-16.6s
+raid_events+=/adds,name=Restless_Amani_5,count=3,first=263.5,duration=10,cooldown=9999,health=1e10
+# Restless Amani x3: 29/30 kills, spawn +-19.9s
+raid_events+=/adds,name=Restless_Amani_6,count=3,first=303.2,duration=8.4,cooldown=9999,health=1e10
+
+# Boss out of reach: absent for a whole phase, or taking under 35% of its normal damage
+# Echo of Jawae absent this phase (present 4% of it)
+raid_events+=/invulnerable,name=Echo_of_Jawae_away_1,target=Echo_of_Jawae,first=0.1,duration=134.3,cooldown=9999
+# Drowned Echo is only a target in its measured windows
+raid_events+=/invulnerable,name=Drowned_Echo_away_1,target=Drowned_Echo,first=0.1,duration=50,cooldown=9999
+# Drowned Echo is only a target in its measured windows
+raid_events+=/invulnerable,name=Drowned_Echo_away_2,target=Drowned_Echo,first=74,duration=93.6,cooldown=9999
+# Nek'zali the Soulcoiler: 30/30 kills, damage falls to 3%
+raid_events+=/invulnerable,name=Nek_zali_the_Soulcoiler_away_1,target=Nek_zali_the_Soulcoiler,first=128,duration=7,cooldown=9999
+# Nek'zali the Soulcoiler absent this phase (present 0% of it)
+raid_events+=/invulnerable,name=Nek_zali_the_Soulcoiler_away_2,target=Nek_zali_the_Soulcoiler,first=134.3,duration=90.4,cooldown=9999
+# Drowned Echo is only a target in its measured windows
+raid_events+=/invulnerable,name=Drowned_Echo_away_3,target=Drowned_Echo,first=190.6,duration=72.1,cooldown=9999
+# Echo of Jawae absent this phase (present 5% of it)
+raid_events+=/invulnerable,name=Echo_of_Jawae_away_2,target=Echo_of_Jawae,first=224.8,duration=137.7,cooldown=9999
+# Drowned Echo is only a target in its measured windows
+raid_events+=/invulnerable,name=Drowned_Echo_away_4,target=Drowned_Echo,first=284.7,duration=77.9,cooldown=9999
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 19.7 s in a 342 s kill
+# Soulcoiler's Curse: 46.3-55.5 s, up to 17% of melee
+raid_events+=/movement,name=M_Soulcoiler_s_Curse_1,players_only=1,distance_max=6,first=50.1,duration=1.1,cooldown=9999
+# Ritual Burn: 68-90.3 s, up to 47% of melee
+raid_events+=/movement,name=M_Ritual_Burn_1,players_only=1,distance_max=6,first=77,duration=3,cooldown=9999
+# Movement: 124.3-134.3 s, up to 59% of melee
+raid_events+=/movement,name=M_Movement_1,players_only=1,distance_max=6,first=128.1,duration=3.1,cooldown=9999
+# Movement: 134.3-141.2 s, up to 51% of melee
+raid_events+=/movement,name=M_Movement_2,players_only=1,distance_max=6,first=136.8,duration=1.9,cooldown=9999
+# Soulcoiler's Curse: 159.8-181.8 s, up to 27% of melee
+raid_events+=/movement,name=M_Soulcoiler_s_Curse_2,players_only=1,distance_max=6,first=167.7,duration=3.5,cooldown=9999
+# Movement: 183.6-198.1 s, up to 22% of melee
+raid_events+=/movement,name=M_Movement_3,players_only=1,distance_max=6,first=189.5,duration=2,cooldown=9999
+# Movement: 224.8-236.1 s, up to 46% of melee
+raid_events+=/movement,name=M_Movement_4,players_only=1,distance_max=6,first=227.1,duration=2.1,cooldown=9999
+# Movement: 256.8-266.6 s, up to 13% of melee
+raid_events+=/movement,name=M_Movement_5,players_only=1,distance_max=6,first=261,duration=0.8,cooldown=9999
+# Invoke: 278.6-300.8 s, up to 20% of melee
+raid_events+=/movement,name=M_Invoke_1,players_only=1,distance_max=6,first=286.9,duration=2.2,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 22.3 s in a 342 s kill
+# Soulcoiler's Curse: 53.8-67.8 s, up to 31% of ranged
+raid_events+=/movement,name=R_Soulcoiler_s_Curse_1,players_only=1,distance_min=6,first=58.8,duration=2.6,cooldown=9999
+# Movement: 121.5-134.3 s, up to 58% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=126.4,duration=3.7,cooldown=9999
+# Hungering Pyre: 150.2-154.3 s, up to 27% of ranged
+raid_events+=/movement,name=R_Hungering_Pyre_1,players_only=1,distance_min=6,first=151.9,duration=0.7,cooldown=9999
+# Movement: 156.7-170.3 s, up to 47% of ranged
+raid_events+=/movement,name=R_Movement_2,players_only=1,distance_min=6,first=161.8,duration=3.6,cooldown=9999
+# Movement: 175.3-184.1 s, up to 24% of ranged
+raid_events+=/movement,name=R_Movement_3,players_only=1,distance_min=6,first=179.3,duration=1.2,cooldown=9999
+# Movement: 224.8-229.3 s, up to 82% of ranged
+raid_events+=/movement,name=R_Movement_4,players_only=1,distance_min=6,first=225.2,duration=1.8,cooldown=9999
+# Ritual Burn: 241.1-244.3 s, up to 80% of ranged
+raid_events+=/movement,name=R_Ritual_Burn_1,players_only=1,distance_min=6,first=242.1,duration=1.3,cooldown=9999
+# Possession Barrage: 271.6-277.1 s, up to 25% of ranged
+raid_events+=/movement,name=R_Possession_Barrage_1,players_only=1,distance_min=6,first=273.8,duration=0.7,cooldown=9999
+# Invoke: 279.1-294.6 s, up to 85% of ranged
+raid_events+=/movement,name=R_Invoke_1,players_only=1,distance_min=6,first=286.1,duration=3.7,cooldown=9999
+# Invoke: 310.1-326.6 s, up to 77% of ranged
+raid_events+=/movement,name=R_Invoke_2,players_only=1,distance_min=6,first=318,duration=3,cooldown=9999

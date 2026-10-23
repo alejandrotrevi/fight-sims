@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fight Sims: The Venomous Abyss fight profiles for Raidbots</title>
+<meta name="description" content="Measured SimulationCraft fight profiles for every The Venomous Abyss boss, built from Warcraft Logs kills. Paste into Raidbots' SimC Expert Mode.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f8f4e'/%3E%3Cpath d='M6 22h4l3-9 4 13 3-8h6' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Fight <span>Sims</span></a>
+  <nav><a href="index.html#bosses">Bosses</a><a href="index.html#how">How to use</a><a href="methodology.html">Methodology</a><a href="https://github.com/alejandrotrevi/fight-sims">GitHub</a></nav>
+</div></header>
+<main class="wrap">
+
+<h1>Sim the fight, not a target dummy.</h1>
+<p class="lede">Raidbots' default fight is Patchwerk: one boss that never moves and never brings adds. These profiles replay every boss of The Venomous Abyss as it really goes: adds, intermissions, damage windows and movement. Every timing is measured from dozens of real kills on Warcraft Logs.</p>
+
+<h2 id="bosses">Bosses</h2>
+<div class="grid"><div class="card boss-card"><h3>Nek'zali the Soulcoiler</h3><div class="facts">3 targets &middot; 6 add waves &middot; kill 5:42 (M)</div><div class="links">
+<a class="btn primary" href="bosses/nekzali-mythic.html">Mythic</a><a class="btn " href="bosses/nekzali-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>Entombed Sentinels</h3><div class="facts">1 target &middot; 6 add waves &middot; kill 5:38 (M)</div><div class="links">
+<a class="btn primary" href="bosses/entombed-sentinels-mythic.html">Mythic</a><a class="btn " href="bosses/entombed-sentinels-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>Vashnik the Malignant</h3><div class="facts">1 target &middot; 9 add waves &middot; kill 5:43 (M)</div><div class="links">
+<a class="btn primary" href="bosses/vashnik-mythic.html">Mythic</a><a class="btn " href="bosses/vashnik-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>The Lost Explorers</h3><div class="facts">2 targets &middot; 0 add waves &middot; kill 5:17 (M)</div><div class="links">
+<a class="btn primary" href="bosses/lost-explorers-mythic.html">Mythic</a><a class="btn " href="bosses/lost-explorers-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>Sszorak</h3><div class="facts">1 target &middot; 0 add waves &middot; kill 5:54 (M)</div><div class="links">
+<a class="btn primary" href="bosses/sszorak-mythic.html">Mythic</a><a class="btn " href="bosses/sszorak-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>The Twin Fangs</h3><div class="facts">2 targets &middot; 10 add waves &middot; kill 6:34 (M)</div><div class="links">
+<a class="btn primary" href="bosses/twin-fangs-mythic.html">Mythic</a><a class="btn " href="bosses/twin-fangs-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>The Coiled Altar</h3><div class="facts">2 targets &middot; 7 add waves &middot; kill 10:09 (M)</div><div class="links">
+<a class="btn primary" href="bosses/coiled-altar-mythic.html">Mythic</a><a class="btn " href="bosses/coiled-altar-heroic.html">Heroic</a></div></div>
+<div class="card boss-card"><h3>Ula'tek</h3><div class="facts">4 targets &middot; 25 add waves &middot; kill 9:58 (M)</div><div class="links">
+<a class="btn primary" href="bosses/ulatek-mythic.html">Mythic</a><a class="btn " href="bosses/ulatek-heroic.html">Heroic</a></div></div></div>
+
+<h2 id="how">How to use it on Raidbots</h2>
+<ol class="steps">
+  <li>On <a href="https://www.raidbots.com">Raidbots</a>, open Top Gear, Droptimizer or Quick Sim and paste your <code>/simc</code> string as usual.</li>
+  <li>In <b>Simulation Options</b>, set <b>Fight Style</b> to <b>Casting Patchwerk</b>. Plain Patchwerk deletes every raid event, so the boss's mechanics would silently vanish.</li>
+  <li>Set <b>Number of Bosses</b> to <b>1</b>. The profile creates the bosses itself. Leave <b>Fight Length</b> alone: the profile sets it.</li>
+  <li>Open <b>Custom APL and SimC Options</b>, tick <b>SimC Expert Mode</b>, and paste the profile into the <b>Script Footer</b> box. The normal custom-options box rejects raid events.</li>
+  <li>Run the sim. Then check the report: under <i>Raid Events</i> you should see the boss's adds and movement, and the DPS should differ from your Patchwerk number.</li>
+</ol>
+<div class="callout"><b>The one setting people miss:</b> Fight Style must be <b>Casting Patchwerk</b>. With plain Patchwerk, Raidbots strips every <code>raid_events</code> line and you are back to a target dummy without any warning.</div>
+<p>It works the same in Top Gear, Droptimizer and Quick Sim, and with SimulationCraft on your own computer (add <code>fight_style=CastingPatchwerk</code> and the profile after your character).</p>
+
+<h2>What a profile contains</h2>
+<div class="tablewrap"><table><tbody>
+<tr><td><span class="tag adds">adds</span></td><td class="wrap-ok">Each add wave: when it spawns, how many, and how long it actually stays alive (first hit to last hit, median over the kills).</td></tr>
+<tr><td><span class="tag away">away</span></td><td class="wrap-ok">Windows where a boss is immune, leaves, or is out of reach: the time its damage taken falls under 35% of normal.</td></tr>
+<tr><td><span class="tag vuln">+%</span></td><td class="wrap-ok">Damage-taken windows (for example a boss taking +30% for 25 seconds), timed from the aura in the logs, with the percentage from the spell's own data.</td></tr>
+<tr><td><span class="tag melee">melee</span></td><td class="wrap-ok">Seconds melee spend out of range, measured from gaps in real melee players' auto-attacks. These only move melee in the sim.</td></tr>
+<tr><td><span class="tag ranged">ranged</span></td><td class="wrap-ok">Seconds casters cannot hard-cast, measured from gaps in real casters' casting. These only move ranged in the sim.</td></tr>
+</tbody></table></div>
+<p class="small muted" style="margin-top:10px">More on how each number is measured, and what the profiles cannot do, on the <a href="methodology.html">methodology page</a>.</p>
+
+</main>
+<footer class="site"><div class="wrap">
+  <p>The Venomous Abyss &middot; patch 12.1.5 &middot; data pulled 2026-10-23 &middot; site built 2026-10-23.
+  Timings are measured from public <a href="https://www.warcraftlogs.com">Warcraft Logs</a> reports; every report used is listed on its boss page.
+  Not affiliated with Blizzard, Raidbots, SimulationCraft or Warcraft Logs.</p>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+  const pre = document.getElementById(b.dataset.copy);
+  try { await navigator.clipboard.writeText(pre.textContent); b.textContent = 'Copied'; }
+  catch (e) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Press Ctrl+C'; }
+  setTimeout(() => (b.textContent = 'Copy'), 1800);
+}));
+</script>
+</body>
+</html>

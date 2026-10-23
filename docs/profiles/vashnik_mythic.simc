@@ -1,0 +1,84 @@
+# Vashnik the Malignant (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (261-370 s kills).
+# Kill length: median of 1000 ranked guild kills (each guild's best) = 343 s (10th pct 301, 90th 364). Set your own here:
+max_time=343
+vary_combat_length=0.05
+
+# The boss
+enemy=Vashnik
+
+# Adds: spawn = first hit on the wave, duration = first hit to last hit (median), count = median wave size
+# Exposure (count x duration) calibrated x0.905: simc has no positions, so every area spell reaches every add.
+# This makes the share of damage that goes into adds match real players of the same spec. Measured values: boss page.
+# Shrouded Venom x7: 30/30 kills, spawn +-0s
+raid_events+=/adds,name=Shrouded_Venom_1,count=7,first=24.1,duration=4.2,cooldown=9999,health=1e10
+# Burning Venom x3: 30/30 kills, spawn +-1.5s
+raid_events+=/adds,name=Burning_Venom_1,count=3,first=28.8,duration=13.3,cooldown=9999,health=1e10
+# Shrouded Venom x7: 30/30 kills, spawn +-0s
+raid_events+=/adds,name=Shrouded_Venom_2,count=7,first=108.1,duration=7.6,cooldown=9999,health=1e10
+# Burning Venom x3: 30/30 kills, spawn +-28.9s
+raid_events+=/adds,name=Burning_Venom_2,count=3,first=111.3,duration=16.6,cooldown=9999,health=1e10
+# Shrouded Venom x7: 30/30 kills, spawn +-0s
+raid_events+=/adds,name=Shrouded_Venom_3,count=7,first=192.1,duration=9.9,cooldown=9999,health=1e10
+# Burning Venom x3: 30/30 kills, spawn +-41.4s
+raid_events+=/adds,name=Burning_Venom_3,count=3,first=194.3,duration=18.7,cooldown=9999,health=1e10
+# Burning Venom x1: 15/30 kills, spawn +-29.4s
+raid_events+=/adds,name=Burning_Venom_4,count=1,first=209.5,duration=15.4,cooldown=9999,health=1e10
+# Burning Venom x3: 29/30 kills, spawn +-42.8s
+raid_events+=/adds,name=Burning_Venom_5,count=3,first=225.6,duration=22.4,cooldown=9999,health=1e10
+# Shrouded Venom x7: 29/30 kills, spawn +-0s
+raid_events+=/adds,name=Shrouded_Venom_4,count=7,first=276.1,duration=13.7,cooldown=9999,health=1e10
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 8.1 s in a 343 s kill
+# Dripping Fangs: 88.3-101.3 s, up to 18% of melee
+raid_events+=/movement,name=M_Dripping_Fangs_1,players_only=1,distance_max=6,first=93.2,duration=1.5,cooldown=9999
+# Imbibe: 107.5-118.8 s, up to 15% of melee
+raid_events+=/movement,name=M_Imbibe_1,players_only=1,distance_max=6,first=112.3,duration=1.1,cooldown=9999
+# Movement: 139.5-147 s, up to 13% of melee
+raid_events+=/movement,name=M_Movement_1,players_only=1,distance_max=6,first=142.8,duration=0.7,cooldown=9999
+# Dripping Fangs: 172-185.8 s, up to 19% of melee
+raid_events+=/movement,name=M_Dripping_Fangs_2,players_only=1,distance_max=6,first=176.8,duration=1.3,cooldown=9999
+# Movement: 223.5-231.8 s, up to 15% of melee
+raid_events+=/movement,name=M_Movement_2,players_only=1,distance_max=6,first=226.9,duration=0.9,cooldown=9999
+# Dripping Fangs: 255.8-264.5 s, up to 18% of melee
+raid_events+=/movement,name=M_Dripping_Fangs_3,players_only=1,distance_max=6,first=259.5,duration=1.1,cooldown=9999
+# Imbibe: 276.5-286 s, up to 13% of melee
+raid_events+=/movement,name=M_Imbibe_2,players_only=1,distance_max=6,first=280.3,duration=0.8,cooldown=9999
+# Movement: 308-315 s, up to 16% of melee
+raid_events+=/movement,name=M_Movement_3,players_only=1,distance_max=6,first=311,duration=0.7,cooldown=9999
+# Dripping Fangs: 341-350 s, up to 17% of melee
+raid_events+=/movement,name=M_Dripping_Fangs_4,players_only=1,distance_max=6,first=344.8,duration=1,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 27.3 s in a 343 s kill
+# Imbibe: 24.3-29.3 s, up to 37% of ranged
+raid_events+=/movement,name=R_Imbibe_1,players_only=1,distance_min=6,first=25.8,duration=0.8,cooldown=9999
+# Malignant Catalyst: 32.5-38 s, up to 37% of ranged
+raid_events+=/movement,name=R_Malignant_Catalyst_1,players_only=1,distance_min=6,first=34.4,duration=1,cooldown=9999
+# Dripping Fangs: 44.3-49.3 s, up to 29% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_1,players_only=1,distance_min=6,first=46.3,duration=1,cooldown=9999
+# Movement: 88-91.5 s, up to 37% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=89,duration=0.8,cooldown=9999
+# Malignant Catalyst: 102.8-124.8 s, up to 41% of ranged
+raid_events+=/movement,name=R_Malignant_Catalyst_2,players_only=1,distance_min=6,first=112.5,duration=4.2,cooldown=9999
+# Dripping Fangs: 127.5-136.3 s, up to 21% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_2,players_only=1,distance_min=6,first=130.8,duration=0.9,cooldown=9999
+# Movement: 138.3-143.3 s, up to 36% of ranged
+raid_events+=/movement,name=R_Movement_2,players_only=1,distance_min=6,first=140.2,duration=0.8,cooldown=9999
+# Movement: 170.5-180 s, up to 33% of ranged
+raid_events+=/movement,name=R_Movement_3,players_only=1,distance_min=6,first=173.7,duration=1.6,cooldown=9999
+# Malignant Catalyst: 190.8-207.3 s, up to 36% of ranged
+raid_events+=/movement,name=R_Malignant_Catalyst_3,players_only=1,distance_min=6,first=197.5,duration=2.3,cooldown=9999
+# Dripping Fangs: 212.5-216.3 s, up to 28% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_3,players_only=1,distance_min=6,first=214,duration=0.6,cooldown=9999
+# Movement: 220.5-228.5 s, up to 39% of ranged
+raid_events+=/movement,name=R_Movement_4,players_only=1,distance_min=6,first=223.9,duration=1.6,cooldown=9999
+# Dripping Fangs: 232.5-235.8 s, up to 27% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_4,players_only=1,distance_min=6,first=233.3,duration=0.5,cooldown=9999
+# Dripping Fangs: 255.8-264.3 s, up to 36% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_5,players_only=1,distance_min=6,first=258.5,duration=1.8,cooldown=9999
+# Dripping Fangs: 275.8-315.8 s, up to 40% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_6,players_only=1,distance_min=6,first=289.9,duration=8,cooldown=9999
+# Dripping Fangs: 340.3-347.3 s, up to 42% of ranged
+raid_events+=/movement,name=R_Dripping_Fangs_7,players_only=1,distance_min=6,first=342.6,duration=1.4,cooldown=9999

@@ -1,0 +1,88 @@
+<h1>Methodology</h1>
+<p class="lede">Every number in a profile is measured from real kills. This page says where the kills come from, how each kind of event is measured, how it is written for SimulationCraft, what was checked, and what the profiles cannot do.</p>
+
+<h2>Where the kills come from</h2>
+<p>All data comes from public reports on <a href="https://www.warcraftlogs.com">Warcraft Logs</a>, read through its v2 API, restricted to the current patch (12.1.5; kills from 14 October 2026 on).</p>
+<ul>
+  <li><b>Mythic.</b> Warcraft Logs' speed ranking lists each guild's best kill, up to 1,000 guilds per boss. Where fewer guilds have killed a boss, that is every guild. From that list, <b>30 kills are picked evenly from the fastest to the slowest</b>, so the sample spans the whole population rather than only the top.</li>
+  <li><b>Heroic.</b> The top 1,000 heroic kills are mostly mythic guilds farming, which would make heroic look much faster than it is for most raids. Heroic therefore samples <b>random public reports</b>, spread evenly over the patch, keeps one kill per report, and picks 30 kills evenly across that kill-length distribution.</li>
+  <li><b>Kill length</b> (<code>max_time</code>) is the median of the whole population above, not of the 30-kill sample. Each boss page shows the 10th and 90th percentiles. Set it to your own kill.</li>
+</ul>
+<p>Each boss page lists its 30 reports with links, so any number can be checked against the source.</p>
+
+<h2>How each event is measured</h2>
+<h3>Phases</h3>
+<p>Phases are taken from Warcraft Logs' phase markers, as the median start of each phase. Some phases end on a health threshold, so their length varies between kills. In those phases, what happens in the first 60% is timed from the phase start and the rest is timed back from the phase end. Transitions therefore line up across kills even when one guild reaches them 20 seconds before another.</p>
+<h3>Boss casts</h3>
+<p>For every ability a boss casts in at least half the kills, the n-th cast in each phase is lined up across kills and its median is taken. The cast start (<code>begincast</code>) is used where one exists. These timings are not simulated directly; they place and label the events below. Each boss page shows them in full.</p>
+<h3><span class="tag adds">adds</span> Adds</h3>
+<p>Every hit on a non-boss enemy is read. An add <i>spawns</i> at its first hit and its <i>life</i> runs to its last hit. Adds whose first hits fall within 5 s of each other form a wave. The profile uses the median wave size, spawn time and life. An add type is kept when it takes at least 1% of the raid's damage and lives 3 s or more. A wave is kept when it appears in at least half the kills.</p>
+<h3>Calibrating how much the adds soak</h3>
+<p>The waves above are what really spawned, but SimulationCraft has no positions: every area spell reaches every add and every boss at once. In real kills, adds spawn at the room's edge, spread out, or die before the next AoE. Left alone, the sim puts too much damage into adds; on The Twin Fangs a Havoc Demon Hunter put about 18% of its damage into adds in the sim, while real Havoc players put 10%.</p>
+<p>So every profile is calibrated against reality:</p>
+<ol>
+<li>For each real DPS player, Warcraft Logs gives the share of their damage that went into adds. The average per spec is used, not the median: raids put some players on adds and leave others on the boss, so many players put exactly 0% into adds.</li>
+<li>SimulationCraft's sample characters for four common specs (Havoc, Arms, Arcane, Demonology) are simulated on the profile, and the same share is measured.</li>
+<li>The adds' exposure (count &times; alive time) is scaled until the sim matches the real players of the same specs, then simulated again to check.</li>
+</ol>
+<p>Each boss page shows the factor and, for each sample spec, the sim's share next to the real one.</p>
+<h3><span class="tag away">away</span> Boss out of reach</h3>
+<p>Each boss's damage taken over time comes from Warcraft Logs' damage graph. A boss counts as <i>present</i> while it takes at least 35% of its normal (median) damage. DoTs keep ticking on a boss that has left, so it never drops to zero. A boss present for under 25% of a phase is absent for that whole phase. Inside the phases where it is present, any gap of 5 s or more that recurs in at least half the kills becomes an invulnerable window.</p>
+<h3><span class="tag vuln">+%</span> Damage-taken windows</h3>
+<p>The window is timed from the aura's application and removal on the boss in the logs. The percentage comes from the spell's own data: its tooltip or the game's spell effects as listed on Wowhead.</p>
+<p>Each percentage is then <b>checked in the logs</b>. A hit's actual damage divided by its unmitigated damage cancels out crits and the player's own buffs. That ratio is compared for the same player and ability inside and outside the window, over hundreds of matched hits:</p>
+<div class="tablewrap"><table><thead><tr><th>Window</th><th>Spell data</th><th class="num">Mythic (matched hits)</th><th class="num">Heroic (matched hits)</th></tr></thead><tbody>
+<tr><td>Sszorak: Dig In</td><td>+30%</td><td class="num">&times;1.300 (548)</td><td class="num">&times;1.300 (635)</td></tr>
+<tr><td>The Coiled Altar: Ghastly Regeneration (Zul'jan)</td><td>+100%</td><td class="num">&times;2.000 (788)</td><td class="num">&times;1.942 (845)</td></tr>
+<tr><td>Ula'tek: Venomous Heart</td><td>lists both 100% and 200%</td><td class="num">&times;2.000 (310)</td><td class="num">&times;2.000 (439)</td></tr>
+</tbody></table></div>
+<p style="margin-top:10px">For Ula'tek's heart the spell data alone did not settle it; the logs did.</p>
+<h3><span class="tag melee">melee</span> Melee movement</h3>
+<p>For every melee DPS player, each auto-attack is read. A gap longer than 2.5 times that player's normal swing interval (and over 2.2 s) means they were out of range; the part past one normal swing is counted. Averaged over every melee DPS in every kill, this gives the share of melee off the boss at each moment. The pull's first 4 s are ignored.</p>
+<p>The fight's typical level (its 40th percentile) is subtracted, since channels and target swaps also pause auto-attacks. The result is scaled to the share of melee who were attacking. A peak in it is a mechanic: its area is the expected seconds each melee player loses, and that becomes one movement of that length for melee only.</p>
+<h3><span class="tag ranged">ranged</span> Ranged movement</h3>
+<p>This uses the same method for casters, counting time spent <i>not hard-casting</i>. Only players who hard-cast at least 30% of the time are used. Instant-heavy specs never have to stop, so they would hide the movement. In SimulationCraft a moving caster can still cast instants, so the equivalent there is time unable to hard-cast.</p>
+<p>Each movement event on a boss page has a <b>90% range</b>. It comes from re-drawing the 30 kills at random 500 times (a bootstrap): the narrower the range, the more consistent that mechanic is between kills.</p>
+
+<h2>How it is written for SimulationCraft</h2>
+<div class="tablewrap"><table><thead><tr><th>Measured</th><th>SimulationCraft</th><th>Checked</th></tr></thead><tbody>
+<tr><td>bosses</td><td class="wrap-ok"><code>enemy=</code> per boss that is attacked at the same time</td><td class="wrap-ok">With several bosses, the report shows one target per boss.</td></tr>
+<tr><td>adds</td><td class="wrap-ok"><code>raid_events+=/adds,count=,first=,duration=,health=1e10</code>. The huge health makes each add live exactly its measured time.</td><td class="wrap-ok">Each wave appears in the report.</td></tr>
+<tr><td>boss away</td><td class="wrap-ok"><code>raid_events+=/invulnerable,target=</code></td><td class="wrap-ok">Players switch to the other target.</td></tr>
+<tr><td>+% windows</td><td class="wrap-ok"><code>raid_events+=/vulnerable,multiplier=</code>. SimulationCraft <b>adds</b> the multiplier (0.3 = +30%, 1 = +100%).</td><td class="wrap-ok">Measured: multiplier=1 doubles damage and 2 triples it.</td></tr>
+<tr><td>melee movement</td><td class="wrap-ok"><code>raid_events+=/movement,players_only=1,distance_max=6</code></td><td class="wrap-ok">simc puts melee at 5 yd and casters at 10 yd or more. Fury and Havoc move; Fire Mage and Destruction do not.</td></tr>
+<tr><td>ranged movement</td><td class="wrap-ok"><code>raid_events+=/movement,players_only=1,distance_min=6</code></td><td class="wrap-ok">Fire Mage and Destruction move; Fury and Havoc do not.</td></tr>
+</tbody></table></div>
+<p style="margin-top:12px"><b>Fight style must be Casting Patchwerk.</b> Plain Patchwerk removes every <code>raid_events</code> line, wherever it is written. This was measured: Patchwerk ignored the profile completely, while Casting Patchwerk applied it.</p>
+
+<h2>What was checked</h2>
+<ul>
+  <li><b>Against hand-verified timings.</b> On The Twin Fangs (mythic), the measured timings match those verified by hand from one guild's own pulls to within 0.1 s: the first Ravenous Feast at 57.0 s, Stone Breaker at 23.0 s with slams at 24.5 / 27.5 / 30.5 s, adds summoned at 33.0 s, the intermission at 136 s and the 155 s cycle.</li>
+  <li><b>Against an independent timeline.</b> Boss casts were compared with the timelines that ship in the TimelineReminders add-on, which its authors build separately. On fixed-timer bosses they agree to within 0.1 s:
+    <div class="tablewrap" style="margin:8px 0"><table><thead><tr><th>Boss</th><th>Ability</th><th>TimelineReminders</th><th>Measured here (median of 30)</th></tr></thead><tbody>
+      <tr><td>Vashnik</td><td>Imbibe</td><td class="num">20, 104, 188</td><td class="num">20.0, 104.0, 188.0</td></tr>
+      <tr><td>Vashnik</td><td>Malignant Catalyst</td><td class="num">30, 69, 114</td><td class="num">30.0, 69.0, 114.0</td></tr>
+      <tr><td>Sszorak</td><td>Raging Crosswinds</td><td class="num">39.8, 86.8, 166.8</td><td class="num">39.7, 86.8, 166.8</td></tr>
+      <tr><td>Sszorak</td><td>Dig In</td><td class="num">100.1</td><td class="num">100.0</td></tr>
+      <tr><td>The Coiled Altar</td><td>Toxic Deluge</td><td class="num">2, 45, 87, 130</td><td class="num">2.0, 45.0, 87.0, 130.0</td></tr>
+      <tr><td>Entombed Sentinels</td><td>Unstable Miasma</td><td class="num">17.6, 79.2, 120.4</td><td class="num">16.8, 75.1, 116.4</td></tr>
+    </tbody></table></div>
+    Entombed Sentinels differs by 1-4 s because its Vitriolic Stasis is triggered by boss energy, so its timing moves from kill to kill (by 2-7 s here). An add-on has to draw one fixed timeline; these profiles use what the kills show.</li>
+  <li><b>Every profile is simulated.</b> Each one runs in SimulationCraft (12.1.5) with melee and ranged sample characters, with no errors. Every event is listed under Raid Events, and the result is compared with Patchwerk on the same kill length; each boss page shows the comparison.</li>
+  <li><b>Against real damage splits.</b> For every profile, the share of damage four sample characters put into adds is compared with the average of real players of the same spec in the 30 kills, using Warcraft Logs' damage tables for each player. Each boss page shows both columns.</li>
+  <li><b>Spread is shown, not hidden.</b> Every event says how many of the 30 kills it appeared in and how much its timing varies.</li>
+</ul>
+
+<h2>What the profiles cannot do</h2>
+<ul>
+  <li><b>No positions.</b> SimulationCraft does not place enemies on the floor. The calibration above fixes how much damage goes into adds on average, but not which spell hits which add: a spec whose AoE needs the adds stacked can still look a little better than it is.</li>
+  <li><b>Movement is an average.</b> In a real kill a few players move a lot, for example the targets of a debuff; the sim moves the whole role for the average time. Totals match, but individual pulls vary.</li>
+  <li><b>Split raids are one half.</b> On Entombed Sentinels each half of the raid hits its own golem, so the sim has one target. In Ula'tek's phase 2 each half kills its own adds, so those waves count half.</li>
+  <li><b>Assignments average out.</b> Raids put some players on adds and leave others on the boss, so many real players put 0% of their damage into adds and others a lot. The profiles match the average player of a spec. If you are always the one on adds, your real AoE value is higher than the sim's.</li>
+  <li><b>Remaining gaps are flagged.</b> Where the sim still puts noticeably more or less damage into adds than real players after calibration (more than 8 percentage points on average), the boss page says so in a "Known gap" box.</li>
+  <li><b>Kill length changes everything.</b> A faster kill sees fewer phases and fewer damage windows. Use your own kill length.</li>
+  <li><b>A snapshot.</b> Hotfixes can move timers. Each page shows when its data was pulled.</li>
+</ul>
+
+<h2>Reproduce it</h2>
+<p>The scripts that build everything are in the <a href="https://github.com/alejandrotrevi/fight-sims/tree/main/tools">repository's tools folder</a>. They need your own Warcraft Logs API client, made at <a href="https://www.warcraftlogs.com/api/clients/">warcraftlogs.com/api/clients</a>. A full pull of 8 bosses on two difficulties uses about 9,000 API points, which is three hours of the free hourly allowance.</p>

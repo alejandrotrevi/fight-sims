@@ -1,0 +1,54 @@
+# The Lost Explorers (heroic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 heroic kills on Warcraft Logs, patch 12.1.5 (156-434 s kills).
+# Kill length: median of 184 heroic kills in randomly sampled public logs = 264 s (10th pct 188, 90th 346). Set your own here:
+max_time=264
+vary_combat_length=0.05
+
+# Bosses (all attackable at once unless an event below says otherwise)
+# Two explorers are kept in cleave range; which ones changes between kills, so the names are placeholders.
+enemy=Trader_Gebbo
+enemy=First_Mate_Nama
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 10.8 s in a 264 s kill
+# Mighty Thud: 69.4-83.6 s, up to 22% of melee
+raid_events+=/movement,name=M_Mighty_Thud_1,players_only=1,distance_max=6,first=75.6,duration=1.8,cooldown=9999
+# Mighty Thud: 98.4-113.6 s, up to 26% of melee
+raid_events+=/movement,name=M_Mighty_Thud_2,players_only=1,distance_max=6,first=103.9,duration=2.1,cooldown=9999
+# Throw Junk: 143.6-149.9 s, up to 13% of melee
+raid_events+=/movement,name=M_Throw_Junk_1,players_only=1,distance_max=6,first=146.3,duration=0.6,cooldown=9999
+# Throw Junk: 173.1-177.9 s, up to 18% of melee
+raid_events+=/movement,name=M_Throw_Junk_2,players_only=1,distance_max=6,first=175.4,duration=0.7,cooldown=9999
+# Throw Junk: 178.7-183.7 s, up to 21% of melee
+raid_events+=/movement,name=M_Throw_Junk_3,players_only=1,distance_max=6,first=180.5,duration=0.9,cooldown=9999
+# Icebound Flames: 191.2-201.5 s, up to 31% of melee
+raid_events+=/movement,name=M_Icebound_Flames_1,players_only=1,distance_max=6,first=195.2,duration=2.1,cooldown=9999
+# Icebound Flames: 217.5-233.5 s, up to 30% of melee
+raid_events+=/movement,name=M_Icebound_Flames_2,players_only=1,distance_max=6,first=223.5,duration=2.6,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 16.2 s in a 264 s kill
+# Icebound Flames: 4-8.3 s, up to 31% of ranged
+raid_events+=/movement,name=R_Icebound_Flames_1,players_only=1,distance_min=6,first=4.8,duration=0.6,cooldown=9999
+# Throw Junk: 53-58.5 s, up to 54% of ranged
+raid_events+=/movement,name=R_Throw_Junk_1,players_only=1,distance_min=6,first=54.8,duration=2.3,cooldown=9999
+# Mighty Thud: 65.4-71.4 s, up to 26% of ranged
+raid_events+=/movement,name=R_Mighty_Thud_1,players_only=1,distance_min=6,first=68.2,duration=0.9,cooldown=9999
+# Mighty Thud: 74.9-80.9 s, up to 45% of ranged
+raid_events+=/movement,name=R_Mighty_Thud_2,players_only=1,distance_min=6,first=77.2,duration=1.4,cooldown=9999
+# Mighty Thud: 96.4-108.1 s, up to 37% of ranged
+raid_events+=/movement,name=R_Mighty_Thud_3,players_only=1,distance_min=6,first=100.3,duration=2.6,cooldown=9999
+# Throw Junk: 172.4-177.9 s, up to 60% of ranged
+raid_events+=/movement,name=R_Throw_Junk_2,players_only=1,distance_min=6,first=173.9,duration=2.5,cooldown=9999
+# Throw Junk: 178.7-184.7 s, up to 36% of ranged
+raid_events+=/movement,name=R_Throw_Junk_3,players_only=1,distance_min=6,first=180.2,duration=1.4,cooldown=9999
+# Icebound Flames: 196.2-199.7 s, up to 37% of ranged
+raid_events+=/movement,name=R_Icebound_Flames_2,players_only=1,distance_min=6,first=197.4,duration=0.8,cooldown=9999
+# Frostfire Volley: 214.7-221.2 s, up to 41% of ranged
+raid_events+=/movement,name=R_Frostfire_Volley_1,players_only=1,distance_min=6,first=216.8,duration=1.5,cooldown=9999
+# Icebound Flames: 222.2-230.5 s, up to 32% of ranged
+raid_events+=/movement,name=R_Icebound_Flames_3,players_only=1,distance_min=6,first=225.4,duration=1.5,cooldown=9999
+# Blink Nova: 254.9-259.2 s, up to 38% of ranged
+raid_events+=/movement,name=R_Blink_Nova_1,players_only=1,distance_min=6,first=256.8,duration=0.7,cooldown=9999
+# Icebound Flames: 278.7-282.4 s, up to 71% of ranged
+raid_events+=/movement,name=R_Icebound_Flames_4,players_only=1,distance_min=6,first=279.2,duration=1.4,cooldown=9999

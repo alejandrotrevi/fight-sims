@@ -1,0 +1,6 @@
+raw/
+tools/token.txt
+node_modules/
+*.log
+sims/runs/
+sims/chars/

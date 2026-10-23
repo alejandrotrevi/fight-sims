@@ -1,0 +1,14 @@
+{
+  "slug": "entombed-sentinels",
+  "enemies": [
+    "Breath of Ula'tek"
+  ],
+  "enemiesNote": "The golems are tanked 40+ yd apart (99% damage reduction when closer) and each half of the raid hits its own: one target.",
+  "adds": {
+    "260766": {
+      "scale": 0.5,
+      "why": "only the Breath side can reach it and the groups swap sides every Stasis"
+    }
+  },
+  "notes": "Two golems tanked 40+ yards apart, so each player only ever hits one: simulated as a single target. Each Vitriolic Stasis puts both golems out of reach for 12-15 seconds. The Venom Coagulation slime spawns at the Breath, and groups swap sides every Stasis, so it counts for half its alive time."
+}

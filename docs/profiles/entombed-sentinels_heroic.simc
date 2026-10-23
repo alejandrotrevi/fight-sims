@@ -1,0 +1,93 @@
+# Entombed Sentinels (heroic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 heroic kills on Warcraft Logs, patch 12.1.5 (196-539 s kills).
+# Kill length: median of 188 heroic kills in randomly sampled public logs = 304 s (10th pct 231, 90th 387). Set your own here:
+max_time=304
+vary_combat_length=0.05
+
+# The boss
+# The golems are tanked 40+ yd apart (99% damage reduction when closer) and each half of the raid hits its own: one target.
+enemy=Breath_of_Ula_tek
+
+# Adds: spawn = first hit on the wave, duration = first hit to last hit (median), count = median wave size
+# Exposure (count x duration) calibrated x1.218: simc has no positions, so every area spell reaches every add.
+# This makes the share of damage that goes into adds match real players of the same spec. Measured values: boss page.
+# Venom Coagulation x1: 30/30 kills, spawn +-0.1s, alive 75.6s x 0.5 (only the Breath side can reach it and the groups swap sides every Stasis)
+raid_events+=/adds,name=Venom_Coagulation_1,count=1,first=16.4,duration=46,cooldown=9999,health=1e10
+# Venom Coagulation x1: 30/30 kills, spawn +-26.1s, alive 45.4s x 0.5 (only the Breath side can reach it and the groups swap sides every Stasis)
+raid_events+=/adds,name=Venom_Coagulation_2,count=1,first=101.1,duration=27.6,cooldown=9999,health=1e10
+# Venom Coagulation x1: 30/30 kills, spawn +-26s, alive 21s x 0.5 (only the Breath side can reach it and the groups swap sides every Stasis)
+raid_events+=/adds,name=Venom_Coagulation_3,count=1,first=178,duration=12.8,cooldown=9999,health=1e10
+# Venom Coagulation x1: 16/30 kills, spawn +-0.5s, alive 18s x 0.5 (only the Breath side can reach it and the groups swap sides every Stasis)
+raid_events+=/adds,name=Venom_Coagulation_4,count=1,first=281.8,duration=11,cooldown=9999,health=1e10
+
+# Boss out of reach: absent for a whole phase, or taking under 35% of its normal damage
+# Breath of Ula'tek absent this phase (present 18% of it)
+raid_events+=/invulnerable,name=Breath_of_Ula_tek_away_1,target=Breath_of_Ula_tek,first=46.4,duration=12,cooldown=9999
+# Breath of Ula'tek absent this phase (present 18% of it)
+raid_events+=/invulnerable,name=Breath_of_Ula_tek_away_2,target=Breath_of_Ula_tek,first=149.3,duration=12.1,cooldown=9999
+# Breath of Ula'tek absent this phase (present 5% of it)
+raid_events+=/invulnerable,name=Breath_of_Ula_tek_away_3,target=Breath_of_Ula_tek,first=253.4,duration=12,cooldown=9999
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 19.1 s in a 304 s kill
+# Vitriolic Stasis: 43.3-47 s, up to 56% of melee
+raid_events+=/movement,name=M_Vitriolic_Stasis_1,players_only=1,distance_max=6,first=45.6,duration=0.8,cooldown=9999
+# Vitriolic Stasis: 46.4-54.4 s, up to 97% of melee
+raid_events+=/movement,name=M_Vitriolic_Stasis_2,players_only=1,distance_max=6,first=47.2,duration=4.9,cooldown=9999
+# Movement: 58.4-63.6 s, up to 42% of melee
+raid_events+=/movement,name=M_Movement_1,players_only=1,distance_max=6,first=59.3,duration=1.1,cooldown=9999
+# Movement: 144.8-149.3 s, up to 53% of melee
+raid_events+=/movement,name=M_Movement_2,players_only=1,distance_max=6,first=147.7,duration=0.7,cooldown=9999
+# Vitriolic Stasis: 149.3-156.1 s, up to 83% of melee
+raid_events+=/movement,name=M_Vitriolic_Stasis_3,players_only=1,distance_max=6,first=150.3,duration=3.9,cooldown=9999
+# Movement: 161.4-170.4 s, up to 34% of melee
+raid_events+=/movement,name=M_Movement_3,players_only=1,distance_max=6,first=163.4,duration=1.3,cooldown=9999
+# Vitriolic Stasis: 248.9-252.9 s, up to 53% of melee
+raid_events+=/movement,name=M_Vitriolic_Stasis_4,players_only=1,distance_max=6,first=251.2,duration=0.9,cooldown=9999
+# Vitriolic Stasis: 253.4-261.4 s, up to 79% of melee
+raid_events+=/movement,name=M_Vitriolic_Stasis_5,players_only=1,distance_max=6,first=254.9,duration=3.9,cooldown=9999
+# Movement: 265.4-273.4 s, up to 46% of melee
+raid_events+=/movement,name=M_Movement_4,players_only=1,distance_max=6,first=266.7,duration=1.6,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 29.4 s in a 304 s kill
+# Empowering Slam: 4-6.5 s, up to 42% of ranged
+raid_events+=/movement,name=R_Empowering_Slam_1,players_only=1,distance_min=6,first=4.5,duration=0.6,cooldown=9999
+# Unstable Miasma: 18.5-23.8 s, up to 25% of ranged
+raid_events+=/movement,name=R_Unstable_Miasma_1,players_only=1,distance_min=6,first=20.4,duration=1,cooldown=9999
+# Blighted Blood: 30.8-47 s, up to 33% of ranged
+raid_events+=/movement,name=R_Blighted_Blood_1,players_only=1,distance_min=6,first=38.9,duration=2.5,cooldown=9999
+# Vitriolic Stasis: 46.4-52.2 s, up to 80% of ranged
+raid_events+=/movement,name=R_Vitriolic_Stasis_1,players_only=1,distance_min=6,first=47.5,duration=2.8,cooldown=9999
+# Empowering Slam: 59.4-69.3 s, up to 44% of ranged
+raid_events+=/movement,name=R_Empowering_Slam_2,players_only=1,distance_min=6,first=62,duration=2.3,cooldown=9999
+# Unstable Miasma: 76.2-83.8 s, up to 43% of ranged
+raid_events+=/movement,name=R_Unstable_Miasma_2,players_only=1,distance_min=6,first=78.1,duration=1.4,cooldown=9999
+# Bloodvenom Injection: 109.2-114.2 s, up to 37% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_1,players_only=1,distance_min=6,first=110.6,duration=1,cooldown=9999
+# Bloodvenom Injection: 130.7-136.8 s, up to 31% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_2,players_only=1,distance_min=6,first=132.5,duration=1.1,cooldown=9999
+# Vitriolic Stasis: 149.8-154.8 s, up to 63% of ranged
+raid_events+=/movement,name=R_Vitriolic_Stasis_2,players_only=1,distance_min=6,first=151.1,duration=2.1,cooldown=9999
+# Empowering Slam: 162.4-171.7 s, up to 43% of ranged
+raid_events+=/movement,name=R_Empowering_Slam_3,players_only=1,distance_min=6,first=165.3,duration=2.1,cooldown=9999
+# Unstable Miasma: 178.7-186.2 s, up to 49% of ranged
+raid_events+=/movement,name=R_Unstable_Miasma_3,players_only=1,distance_min=6,first=181.1,duration=2.3,cooldown=9999
+# Bloodvenom Injection: 194.2-196.9 s, up to 33% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_3,players_only=1,distance_min=6,first=195.1,duration=0.5,cooldown=9999
+# Bloodvenom Injection: 211.9-217.7 s, up to 29% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_4,players_only=1,distance_min=6,first=214.3,duration=1.1,cooldown=9999
+# Bloodvenom Injection: 234.7-239.7 s, up to 42% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_5,players_only=1,distance_min=6,first=236.2,duration=1,cooldown=9999
+# Movement: 245.7-252.9 s, up to 38% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=249.1,duration=1.2,cooldown=9999
+# Vitriolic Stasis: 253.4-259.9 s, up to 54% of ranged
+raid_events+=/movement,name=R_Vitriolic_Stasis_3,players_only=1,distance_min=6,first=255.2,duration=2.1,cooldown=9999
+# Movement: 265.4-272.2 s, up to 32% of ranged
+raid_events+=/movement,name=R_Movement_2,players_only=1,distance_min=6,first=268.1,duration=1.2,cooldown=9999
+# Unstable Miasma: 281.7-289.9 s, up to 34% of ranged
+raid_events+=/movement,name=R_Unstable_Miasma_4,players_only=1,distance_min=6,first=285.1,duration=1.8,cooldown=9999
+# Bloodvenom Injection: 295.7-302.7 s, up to 33% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_6,players_only=1,distance_min=6,first=298.6,duration=1.3,cooldown=9999
+# Bloodvenom Injection: 316.2-320.7 s, up to 60% of ranged
+raid_events+=/movement,name=R_Bloodvenom_Injection_7,players_only=1,distance_min=6,first=317.8,duration=1.4,cooldown=9999

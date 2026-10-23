@@ -1,0 +1,20 @@
+{
+  "slug": "coiled-altar",
+  "vulnerable": {
+    "1304033": {
+      "mult": 1,
+      "label": "Ghastly Regeneration",
+      "measured": "x2.000 in the logs (788 matched hits, same player and ability inside vs outside the window)"
+    }
+  },
+  "notes": "Zul'jan alone, then Hex Lord Malacrass alone, then both together. In the intermission Zul'jan takes double damage (Ghastly Regeneration) and Malacrass cannot be hurt. Spiteful Soulcoilers spawn across the room, and SimulationCraft has no positions, so cleave on them is optimistic.",
+  "heroic": {
+    "vulnerable": {
+      "1304033": {
+        "mult": 1,
+        "label": "Ghastly Regeneration",
+        "measured": "x1.942 in the logs (845 matched hits, same player and ability inside vs outside the window)"
+      }
+    }
+  }
+}

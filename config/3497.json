@@ -1,0 +1,17 @@
+{
+  "slug": "lost-explorers",
+  "phaseMerge": {
+    "3": 2,
+    "4": 2
+  },
+  "enemies": [
+    "Trader Gebbo",
+    "First Mate Nama"
+  ],
+  "skipAway": true,
+  "notes": "Three explorers with separate health. Two are kept in cleave and the third is pulled more than 30 yards away (all three together take 99% less damage). Which one stands apart changes from kill to kill. In the 30 kills two explorers were taking damage 57% of the time and all three 35%, so the sim has two targets. The empowered-explorer phases come in random order and count as one kind of phase here.",
+  "enemiesNote": "Two explorers are kept in cleave range; which ones changes between kills, so the names are placeholders.",
+  "heroic": {
+    "notes": "Three explorers with separate health. Two are kept in cleave and the third is pulled more than 30 yards away (all three together take 99% less damage). Which one stands apart changes from kill to kill. In the 30 heroic kills two explorers were taking damage 51% of the time and all three 35%, so the sim has two targets. The empowered-explorer phases come in random order and count as one kind of phase here."
+  }
+}

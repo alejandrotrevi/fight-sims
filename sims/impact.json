@@ -1,0 +1,738 @@
+{
+ "3470_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 342,
+   "base": 259773,
+   "fight": 292547,
+   "events": 34,
+   "simAddShare": 0.083,
+   "realAddShare": 0.083,
+   "realPlayers": 17
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 342,
+   "base": 250212,
+   "fight": 289716,
+   "events": 34,
+   "simAddShare": 0.102,
+   "realAddShare": 0.08,
+   "realPlayers": 30
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 342,
+   "base": 202131,
+   "fight": 254911,
+   "events": 34,
+   "simAddShare": 0.102,
+   "realAddShare": 0.175,
+   "realPlayers": 48
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 342,
+   "base": 234637,
+   "fight": 398485,
+   "events": 34,
+   "simAddShare": 0.189,
+   "realAddShare": 0.142,
+   "realPlayers": 42
+  }
+ ],
+ "3445_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 338,
+   "base": 260185,
+   "fight": 250147,
+   "events": 42,
+   "simAddShare": 0.086,
+   "realAddShare": 0.102,
+   "realPlayers": 18
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 338,
+   "base": 250095,
+   "fight": 253040,
+   "events": 42,
+   "simAddShare": 0.145,
+   "realAddShare": 0.142,
+   "realPlayers": 33
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 338,
+   "base": 203024,
+   "fight": 203222,
+   "events": 42,
+   "simAddShare": 0.129,
+   "realAddShare": 0.142,
+   "realPlayers": 53
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 338,
+   "base": 234404,
+   "fight": 268257,
+   "events": 42,
+   "simAddShare": 0.213,
+   "realAddShare": 0.174,
+   "realPlayers": 25
+  }
+ ],
+ "3455_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 343,
+   "base": 259894,
+   "fight": 322681,
+   "events": 34,
+   "simAddShare": 0.206,
+   "realAddShare": 0.25,
+   "realPlayers": 20
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 343,
+   "base": 250072,
+   "fight": 336951,
+   "events": 34,
+   "simAddShare": 0.278,
+   "realAddShare": 0.288,
+   "realPlayers": 37
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 343,
+   "base": 202767,
+   "fight": 295237,
+   "events": 34,
+   "simAddShare": 0.328,
+   "realAddShare": 0.332,
+   "realPlayers": 52
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 343,
+   "base": 235081,
+   "fight": 375381,
+   "events": 34,
+   "simAddShare": 0.396,
+   "realAddShare": 0.324,
+   "realPlayers": 40
+  }
+ ],
+ "3497_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 317,
+   "base": 260292,
+   "fight": 327781,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 18
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 317,
+   "base": 247992,
+   "fight": 351975,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 41
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 317,
+   "base": 204968,
+   "fight": 282845,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 32
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 317,
+   "base": 231958,
+   "fight": 385785,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 27
+  }
+ ],
+ "3420_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 354,
+   "base": 257215,
+   "fight": 263468,
+   "events": 36,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 15
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 354,
+   "base": 250820,
+   "fight": 261517,
+   "events": 36,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 29
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 354,
+   "base": 201275,
+   "fight": 198156,
+   "events": 36,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 53
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 354,
+   "base": 235696,
+   "fight": 230860,
+   "events": 36,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 36
+  }
+ ],
+ "3421_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 394,
+   "base": 253764,
+   "fight": 346181,
+   "events": 38,
+   "simAddShare": 0.102,
+   "realAddShare": 0.11,
+   "realPlayers": 18
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 394,
+   "base": 247675,
+   "fight": 364971,
+   "events": 38,
+   "simAddShare": 0.061,
+   "realAddShare": 0.083,
+   "realPlayers": 39
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 394,
+   "base": 203045,
+   "fight": 294101,
+   "events": 38,
+   "simAddShare": 0.102,
+   "realAddShare": 0.132,
+   "realPlayers": 16
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 394,
+   "base": 233247,
+   "fight": 459866,
+   "events": 38,
+   "simAddShare": 0.14,
+   "realAddShare": 0.076,
+   "realPlayers": 39
+  }
+ ],
+ "3429_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 609,
+   "base": 247365,
+   "fight": 267595,
+   "events": 53,
+   "simAddShare": 0.05,
+   "realAddShare": 0.017,
+   "realPlayers": 23
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 609,
+   "base": 242181,
+   "fight": 271461,
+   "events": 53,
+   "simAddShare": 0.04,
+   "realAddShare": 0.014,
+   "realPlayers": 36
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 609,
+   "base": 197412,
+   "fight": 219598,
+   "events": 53,
+   "simAddShare": 0.065,
+   "realAddShare": 0.044,
+   "realPlayers": 50
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 609,
+   "base": 226561,
+   "fight": 284595,
+   "events": 53,
+   "simAddShare": 0.067,
+   "realAddShare": 0.009,
+   "realPlayers": 1
+  }
+ ],
+ "3492_mythic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 598,
+   "base": 248096,
+   "fight": 347435,
+   "events": 87,
+   "simAddShare": 0.379,
+   "realAddShare": 0.383,
+   "realPlayers": 29
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 598,
+   "base": 242610,
+   "fight": 352892,
+   "events": 87,
+   "simAddShare": 0.381,
+   "realAddShare": 0.444,
+   "realPlayers": 37
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 598,
+   "base": 198274,
+   "fight": 329379,
+   "events": 87,
+   "simAddShare": 0.399,
+   "realAddShare": 0.468,
+   "realPlayers": 56
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 598,
+   "base": 226837,
+   "fight": 565628,
+   "events": 87,
+   "simAddShare": 0.58,
+   "realAddShare": 0.445,
+   "realPlayers": 43
+  }
+ ],
+ "3470_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 283,
+   "base": 261578,
+   "fight": 287663,
+   "events": 30,
+   "simAddShare": 0.073,
+   "realAddShare": 0.083,
+   "realPlayers": 21
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 283,
+   "base": 248581,
+   "fight": 288145,
+   "events": 30,
+   "simAddShare": 0.093,
+   "realAddShare": 0.069,
+   "realPlayers": 35
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 283,
+   "base": 201163,
+   "fight": 238511,
+   "events": 30,
+   "simAddShare": 0.116,
+   "realAddShare": 0.14,
+   "realPlayers": 40
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 283,
+   "base": 237989,
+   "fight": 307333,
+   "events": 30,
+   "simAddShare": 0.116,
+   "realAddShare": 0.11,
+   "realPlayers": 38
+  }
+ ],
+ "3445_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 304,
+   "base": 259539,
+   "fight": 247392,
+   "events": 37,
+   "simAddShare": 0.072,
+   "realAddShare": 0.104,
+   "realPlayers": 16
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 304,
+   "base": 247717,
+   "fight": 245504,
+   "events": 37,
+   "simAddShare": 0.112,
+   "realAddShare": 0.111,
+   "realPlayers": 54
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 304,
+   "base": 204812,
+   "fight": 203941,
+   "events": 37,
+   "simAddShare": 0.124,
+   "realAddShare": 0.112,
+   "realPlayers": 48
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 304,
+   "base": 234750,
+   "fight": 251678,
+   "events": 37,
+   "simAddShare": 0.16,
+   "realAddShare": 0.126,
+   "realPlayers": 31
+  }
+ ],
+ "3455_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 266,
+   "base": 263152,
+   "fight": 295903,
+   "events": 23,
+   "simAddShare": 0.116,
+   "realAddShare": 0.164,
+   "realPlayers": 22
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 266,
+   "base": 250040,
+   "fight": 297620,
+   "events": 23,
+   "simAddShare": 0.179,
+   "realAddShare": 0.161,
+   "realPlayers": 43
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 266,
+   "base": 201109,
+   "fight": 256840,
+   "events": 23,
+   "simAddShare": 0.23,
+   "realAddShare": 0.272,
+   "realPlayers": 66
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 266,
+   "base": 234006,
+   "fight": 323265,
+   "events": 23,
+   "simAddShare": 0.291,
+   "realAddShare": 0.202,
+   "realPlayers": 47
+  }
+ ],
+ "3497_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 264,
+   "base": 262541,
+   "fight": 330768,
+   "events": 20,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 22
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 264,
+   "base": 250290,
+   "fight": 355290,
+   "events": 20,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 44
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 264,
+   "base": 201971,
+   "fight": 279185,
+   "events": 20,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 53
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 264,
+   "base": 233143,
+   "fight": 385228,
+   "events": 20,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 41
+  }
+ ],
+ "3420_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 284,
+   "base": 261406,
+   "fight": 272986,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 20
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 284,
+   "base": 248802,
+   "fight": 261850,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 38
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 284,
+   "base": 201897,
+   "fight": 194808,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 60
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 284,
+   "base": 238222,
+   "fight": 236937,
+   "events": 23,
+   "simAddShare": 0,
+   "realAddShare": 0,
+   "realPlayers": 40
+  }
+ ],
+ "3421_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 360,
+   "base": 256571,
+   "fight": 324676,
+   "events": 29,
+   "simAddShare": 0.031,
+   "realAddShare": 0.089,
+   "realPlayers": 18
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 360,
+   "base": 250482,
+   "fight": 358508,
+   "events": 29,
+   "simAddShare": 0.051,
+   "realAddShare": 0.038,
+   "realPlayers": 49
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 360,
+   "base": 200793,
+   "fight": 288067,
+   "events": 29,
+   "simAddShare": 0.096,
+   "realAddShare": 0.105,
+   "realPlayers": 39
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 360,
+   "base": 235103,
+   "fight": 503850,
+   "events": 29,
+   "simAddShare": 0.174,
+   "realAddShare": 0.079,
+   "realPlayers": 41
+  }
+ ],
+ "3429_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 381,
+   "base": 253918,
+   "fight": 245453,
+   "events": 29,
+   "simAddShare": 0.021,
+   "realAddShare": 0.016,
+   "realPlayers": 29
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 381,
+   "base": 248597,
+   "fight": 248777,
+   "events": 29,
+   "simAddShare": 0.015,
+   "realAddShare": 0.017,
+   "realPlayers": 45
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 381,
+   "base": 201738,
+   "fight": 197952,
+   "events": 29,
+   "simAddShare": 0.014,
+   "realAddShare": 0.024,
+   "realPlayers": 42
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 381,
+   "base": 232655,
+   "fight": 262174,
+   "events": 29,
+   "simAddShare": 0.026,
+   "realAddShare": 0.018,
+   "realPlayers": 39
+  }
+ ],
+ "3492_heroic": [
+  {
+   "label": "Havoc Demon Hunter (melee)",
+   "spec": "DemonHunter-Havoc",
+   "maxTime": 565,
+   "base": 249472,
+   "fight": 267356,
+   "events": 71,
+   "simAddShare": 0.361,
+   "realAddShare": 0.237,
+   "realPlayers": 24
+  },
+  {
+   "label": "Arms Warrior (melee)",
+   "spec": "Warrior-Arms",
+   "maxTime": 565,
+   "base": 242924,
+   "fight": 249318,
+   "events": 71,
+   "simAddShare": 0.336,
+   "realAddShare": 0.242,
+   "realPlayers": 54
+  },
+  {
+   "label": "Arcane Mage (ranged)",
+   "spec": "Mage-Arcane",
+   "maxTime": 565,
+   "base": 198412,
+   "fight": 222250,
+   "events": 71,
+   "simAddShare": 0.371,
+   "realAddShare": 0.281,
+   "realPlayers": 53
+  },
+  {
+   "label": "Demonology Warlock (ranged)",
+   "spec": "Warlock-Demonology",
+   "maxTime": 565,
+   "base": 227912,
+   "fight": 272964,
+   "events": 71,
+   "simAddShare": 0.341,
+   "realAddShare": 0.223,
+   "realPlayers": 46
+  }
+ ]
+}

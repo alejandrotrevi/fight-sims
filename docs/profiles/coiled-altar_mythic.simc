@@ -1,0 +1,127 @@
+# The Coiled Altar (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (466-651 s kills).
+# Kill length: median of 513 ranked guild kills (each guild's best) = 609 s (10th pct 526, 90th 630). Set your own here:
+max_time=609
+vary_combat_length=0.05
+
+# Bosses (all attackable at once unless an event below says otherwise)
+enemy=Zul_jan
+enemy=Hex_Lord_Malacrass
+
+# Adds: spawn = first hit on the wave, duration = first hit to last hit (median), count = median wave size
+# Exposure (count x duration) calibrated x0.2: simc has no positions, so every area spell reaches every add.
+# This makes the share of damage that goes into adds match real players of the same spec. Measured values: boss page.
+# Spiteful Soulcoiler x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spiteful_Soulcoiler_1,count=1,first=193.7,duration=9.6,cooldown=9999,health=1e10
+# Spiteful Soulcoiler x1: 30/30 kills, spawn +-0.5s
+raid_events+=/adds,name=Spiteful_Soulcoiler_2,count=1,first=226.9,duration=13.2,cooldown=9999,health=1e10
+# Spiteful Soulcoiler x1: 30/30 kills, spawn +-0.4s
+raid_events+=/adds,name=Spiteful_Soulcoiler_3,count=1,first=278.8,duration=10.1,cooldown=9999,health=1e10
+# Spiteful Soulcoiler x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spiteful_Soulcoiler_4,count=1,first=312.2,duration=12.8,cooldown=9999,health=1e10
+# Spiteful Soulcoiler x2: 21/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spiteful_Soulcoiler_5,count=2,first=363.2,duration=20.6,cooldown=9999,health=1e10
+# Spiteful Soulcoiler x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spiteful_Soulcoiler_6,count=1,first=493.3,duration=11.4,cooldown=9999,health=1e10
+# Spiteful Soulcoiler x1: 28/30 kills, spawn +-0.5s
+raid_events+=/adds,name=Spiteful_Soulcoiler_7,count=1,first=590.1,duration=8.7,cooldown=9999,health=1e10
+
+# Boss out of reach: absent for a whole phase, or taking under 35% of its normal damage
+# Hex Lord Malacrass absent this phase (present 0% of it)
+raid_events+=/invulnerable,name=Hex_Lord_Malacrass_away_1,target=Hex_Lord_Malacrass,first=0.1,duration=167.6,cooldown=9999
+# Zul'jan absent this phase (present 0% of it)
+raid_events+=/invulnerable,name=Zul_jan_away_1,target=Zul_jan,first=167.6,duration=218.1,cooldown=9999
+# Hex Lord Malacrass: 30/30 kills, damage falls to 0%
+raid_events+=/invulnerable,name=Hex_Lord_Malacrass_away_2,target=Hex_Lord_Malacrass,first=168,duration=8,cooldown=9999
+# Hex Lord Malacrass: 20/30 kills, damage falls to 13%
+raid_events+=/invulnerable,name=Hex_Lord_Malacrass_away_3,target=Hex_Lord_Malacrass,first=359.4,duration=26,cooldown=9999
+# Hex Lord Malacrass absent this phase (present 2% of it)
+raid_events+=/invulnerable,name=Hex_Lord_Malacrass_away_4,target=Hex_Lord_Malacrass,first=385.7,duration=37.8,cooldown=9999
+
+# Damage taken windows, timed from the aura in the logs. simc ADDS the multiplier: 0.3 = +30%, 1 = +100%
+# Ghastly Regeneration on Zul'jan: +100% damage taken, 30/30 kills, start +-0.3s
+raid_events+=/vulnerable,name=Ghastly_Regeneration_1,target=Zul_jan,multiplier=1,first=388.9,duration=34.8,cooldown=9999
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 70.7 s in a 609 s kill
+# Toxic Deluge: 41.5-56.8 s, up to 42% of melee
+raid_events+=/movement,name=M_Toxic_Deluge_1,players_only=1,distance_max=6,first=47.1,duration=2.6,cooldown=9999
+# Venomfang: 122-167.5 s, up to 55% of melee
+raid_events+=/movement,name=M_Venomfang_1,players_only=1,distance_max=6,first=145.1,duration=11.4,cooldown=9999
+# Movement: 167.6-178.6 s, up to 100% of melee
+raid_events+=/movement,name=M_Movement_1,players_only=1,distance_max=6,first=168.1,duration=9.1,cooldown=9999
+# Gloombomb: 197.1-207.9 s, up to 34% of melee
+raid_events+=/movement,name=M_Gloombomb_1,players_only=1,distance_max=6,first=200.8,duration=2.6,cooldown=9999
+# Gloombomb: 232.6-245.4 s, up to 38% of melee
+raid_events+=/movement,name=M_Gloombomb_2,players_only=1,distance_max=6,first=237,duration=2.8,cooldown=9999
+# Gloombomb: 281.4-291.9 s, up to 35% of melee
+raid_events+=/movement,name=M_Gloombomb_3,players_only=1,distance_max=6,first=285,duration=2.4,cooldown=9999
+# Gloombomb: 313.9-336.9 s, up to 30% of melee
+raid_events+=/movement,name=M_Gloombomb_4,players_only=1,distance_max=6,first=322.2,duration=3.5,cooldown=9999
+# Gloombomb: 344.1-386.4 s, up to 57% of melee
+raid_events+=/movement,name=M_Gloombomb_5,players_only=1,distance_max=6,first=358.8,duration=13.3,cooldown=9999
+# Ghastly Regeneration: 385.7-395 s, up to 65% of melee
+raid_events+=/movement,name=M_Ghastly_Regeneration_1,players_only=1,distance_max=6,first=387.1,duration=2.8,cooldown=9999
+# Grim Guillotine: 442.5-451.5 s, up to 40% of melee
+raid_events+=/movement,name=M_Grim_Guillotine_1,players_only=1,distance_max=6,first=445.8,duration=2.4,cooldown=9999
+# Blighted Sever: 453.8-464 s, up to 30% of melee
+raid_events+=/movement,name=M_Blighted_Sever_1,players_only=1,distance_max=6,first=457.4,duration=2.3,cooldown=9999
+# Dreadmarch: 480.3-494.5 s, up to 35% of melee
+raid_events+=/movement,name=M_Dreadmarch_1,players_only=1,distance_max=6,first=486.2,duration=2.1,cooldown=9999
+# Grim Guillotine: 497.8-524.5 s, up to 38% of melee
+raid_events+=/movement,name=M_Grim_Guillotine_2,players_only=1,distance_max=6,first=505,duration=5.8,cooldown=9999
+# Gloombomb: 535.8-547.8 s, up to 27% of melee
+raid_events+=/movement,name=M_Gloombomb_6,players_only=1,distance_max=6,first=540.1,duration=2.4,cooldown=9999
+# Dreadmarch: 574-587.8 s, up to 32% of melee
+raid_events+=/movement,name=M_Dreadmarch_2,players_only=1,distance_max=6,first=580.4,duration=2.1,cooldown=9999
+# Grim Guillotine: 599.3-616.3 s, up to 25% of melee
+raid_events+=/movement,name=M_Grim_Guillotine_3,players_only=1,distance_max=6,first=606.4,duration=3.1,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 68.3 s in a 609 s kill
+# Toxic Deluge: 4-16.3 s, up to 55% of ranged
+raid_events+=/movement,name=R_Toxic_Deluge_1,players_only=1,distance_min=6,first=7.9,duration=3.6,cooldown=9999
+# Venomfang: 26-30 s, up to 28% of ranged
+raid_events+=/movement,name=R_Venomfang_1,players_only=1,distance_min=6,first=27.5,duration=0.7,cooldown=9999
+# Toxic Deluge: 46.8-52.3 s, up to 39% of ranged
+raid_events+=/movement,name=R_Toxic_Deluge_2,players_only=1,distance_min=6,first=49.1,duration=1.1,cooldown=9999
+# Toxic Deluge: 88.3-94.8 s, up to 48% of ranged
+raid_events+=/movement,name=R_Toxic_Deluge_3,players_only=1,distance_min=6,first=91.2,duration=1.5,cooldown=9999
+# Sever: 122.8-126.8 s, up to 28% of ranged
+raid_events+=/movement,name=R_Sever_1,players_only=1,distance_min=6,first=124.6,duration=0.7,cooldown=9999
+# Venomfang: 127.8-167.5 s, up to 61% of ranged
+raid_events+=/movement,name=R_Venomfang_2,players_only=1,distance_min=6,first=142.6,duration=12.8,cooldown=9999
+# Movement: 167.6-186.1 s, up to 99% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=169.1,duration=9.9,cooldown=9999
+# Gloombomb: 194.1-201.1 s, up to 44% of ranged
+raid_events+=/movement,name=R_Gloombomb_1,players_only=1,distance_min=6,first=196.8,duration=1.8,cooldown=9999
+# Gloombomb: 227.9-237.1 s, up to 35% of ranged
+raid_events+=/movement,name=R_Gloombomb_2,players_only=1,distance_min=6,first=231.4,duration=2,cooldown=9999
+# Soul Sever: 241.9-247.1 s, up to 30% of ranged
+raid_events+=/movement,name=R_Soul_Sever_1,players_only=1,distance_min=6,first=244.1,duration=0.9,cooldown=9999
+# Gloombomb: 276.6-285.6 s, up to 40% of ranged
+raid_events+=/movement,name=R_Gloombomb_3,players_only=1,distance_min=6,first=280.3,duration=2,cooldown=9999
+# Spiritcackle: 309.1-319.9 s, up to 40% of ranged
+raid_events+=/movement,name=R_Spiritcackle_1,players_only=1,distance_min=6,first=313.5,duration=1.9,cooldown=9999
+# Spiritcackle: 347.4-370.1 s, up to 54% of ranged
+raid_events+=/movement,name=R_Spiritcackle_2,players_only=1,distance_min=6,first=355,duration=7.9,cooldown=9999
+# Ghastly Regeneration: 385.7-396.5 s, up to 73% of ranged
+raid_events+=/movement,name=R_Ghastly_Regeneration_1,players_only=1,distance_min=6,first=387.3,duration=6,cooldown=9999
+# Grim Guillotine: 444.3-450.5 s, up to 23% of ranged
+raid_events+=/movement,name=R_Grim_Guillotine_1,players_only=1,distance_min=6,first=447.3,duration=0.7,cooldown=9999
+# Gloombomb: 454.5-458 s, up to 38% of ranged
+raid_events+=/movement,name=R_Gloombomb_4,players_only=1,distance_min=6,first=455.9,duration=0.7,cooldown=9999
+# Dreadmarch: 483.3-490.3 s, up to 33% of ranged
+raid_events+=/movement,name=R_Dreadmarch_1,players_only=1,distance_min=6,first=485.9,duration=1.4,cooldown=9999
+# Gloombomb: 491.3-518.3 s, up to 67% of ranged
+raid_events+=/movement,name=R_Gloombomb_5,players_only=1,distance_min=6,first=501,duration=7.7,cooldown=9999
+# Gloombomb: 528.8-542.8 s, up to 52% of ranged
+raid_events+=/movement,name=R_Gloombomb_6,players_only=1,distance_min=6,first=534.3,duration=3,cooldown=9999
+# Dreadmarch: 576.5-580.5 s, up to 23% of ranged
+raid_events+=/movement,name=R_Dreadmarch_2,players_only=1,distance_min=6,first=578.1,duration=0.7,cooldown=9999
+# Blighted Sever: 592.8-595.8 s, up to 35% of ranged
+raid_events+=/movement,name=R_Blighted_Sever_1,players_only=1,distance_min=6,first=593.8,duration=0.6,cooldown=9999
+# Gloombomb: 599.8-604.5 s, up to 29% of ranged
+raid_events+=/movement,name=R_Gloombomb_7,players_only=1,distance_min=6,first=601.3,duration=0.7,cooldown=9999
+# Grim Guillotine: 606.3-615.8 s, up to 79% of ranged
+raid_events+=/movement,name=R_Grim_Guillotine_2,players_only=1,distance_min=6,first=610.4,duration=3.8,cooldown=9999

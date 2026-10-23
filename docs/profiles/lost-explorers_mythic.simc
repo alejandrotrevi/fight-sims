@@ -1,0 +1,60 @@
+# The Lost Explorers (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (232-343 s kills).
+# Kill length: median of 1000 ranked guild kills (each guild's best) = 317 s (10th pct 274, 90th 338). Set your own here:
+max_time=317
+vary_combat_length=0.05
+
+# Bosses (all attackable at once unless an event below says otherwise)
+# Two explorers are kept in cleave range; which ones changes between kills, so the names are placeholders.
+enemy=Trader_Gebbo
+enemy=First_Mate_Nama
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 14.6 s in a 317 s kill
+# Frostfire Volley: 73-88.2 s, up to 29% of melee
+raid_events+=/movement,name=M_Frostfire_Volley_1,players_only=1,distance_max=6,first=77.7,duration=2.5,cooldown=9999
+# Shell Spin: 98.7-114 s, up to 38% of melee
+raid_events+=/movement,name=M_Shell_Spin_1,players_only=1,distance_max=6,first=104.1,duration=3.3,cooldown=9999
+# Blink Nova: 129.7-144.5 s, up to 19% of melee
+raid_events+=/movement,name=M_Blink_Nova_1,players_only=1,distance_max=6,first=136.8,duration=1.3,cooldown=9999
+# Shell Spin: 177.5-182.5 s, up to 16% of melee
+raid_events+=/movement,name=M_Shell_Spin_2,players_only=1,distance_max=6,first=180.2,duration=0.5,cooldown=9999
+# Shell Spin: 181.8-186.3 s, up to 20% of melee
+raid_events+=/movement,name=M_Shell_Spin_3,players_only=1,distance_max=6,first=183.1,duration=0.7,cooldown=9999
+# Mighty Thud: 194.1-206.8 s, up to 26% of melee
+raid_events+=/movement,name=M_Mighty_Thud_1,players_only=1,distance_max=6,first=199.5,duration=1.7,cooldown=9999
+# Shell Spin: 220.3-236.8 s, up to 25% of melee
+raid_events+=/movement,name=M_Shell_Spin_4,players_only=1,distance_max=6,first=226.2,duration=2.3,cooldown=9999
+# Shell Spin: 290.5-304 s, up to 22% of melee
+raid_events+=/movement,name=M_Shell_Spin_5,players_only=1,distance_max=6,first=298.1,duration=1.3,cooldown=9999
+# Icebound Flames: 301.5-306.8 s, up to 31% of melee
+raid_events+=/movement,name=M_Icebound_Flames_1,players_only=1,distance_max=6,first=302.8,duration=1,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 19.2 s in a 317 s kill
+# Icebound Flames: 4-10.3 s, up to 52% of ranged
+raid_events+=/movement,name=R_Icebound_Flames_1,players_only=1,distance_min=6,first=5,duration=1.4,cooldown=9999
+# Shell Spin: 56-61.3 s, up to 45% of ranged
+raid_events+=/movement,name=R_Shell_Spin_1,players_only=1,distance_min=6,first=58,duration=1.4,cooldown=9999
+# Frostfire Volley: 72.7-76.5 s, up to 25% of ranged
+raid_events+=/movement,name=R_Frostfire_Volley_1,players_only=1,distance_min=6,first=74,duration=0.6,cooldown=9999
+# Frostfire Volley: 97.5-113.5 s, up to 41% of ranged
+raid_events+=/movement,name=R_Frostfire_Volley_2,players_only=1,distance_min=6,first=102.7,duration=3.3,cooldown=9999
+# Blink Nova: 132-136.5 s, up to 18% of ranged
+raid_events+=/movement,name=R_Blink_Nova_1,players_only=1,distance_min=6,first=133.8,duration=0.6,cooldown=9999
+# Shell Spin: 140.5-144.5 s, up to 23% of ranged
+raid_events+=/movement,name=R_Shell_Spin_2,players_only=1,distance_min=6,first=142.2,duration=0.5,cooldown=9999
+# Shell Spin: 175.7-182.5 s, up to 39% of ranged
+raid_events+=/movement,name=R_Shell_Spin_3,players_only=1,distance_min=6,first=178.3,duration=1.8,cooldown=9999
+# Frostfire Volley: 188.3-198.3 s, up to 28% of ranged
+raid_events+=/movement,name=R_Frostfire_Volley_3,players_only=1,distance_min=6,first=192.3,duration=1.5,cooldown=9999
+# Mighty Thud: 221.1-235.3 s, up to 33% of ranged
+raid_events+=/movement,name=R_Mighty_Thud_1,players_only=1,distance_min=6,first=226.6,duration=2.8,cooldown=9999
+# Shell Spin: 267.5-272 s, up to 19% of ranged
+raid_events+=/movement,name=R_Shell_Spin_4,players_only=1,distance_min=6,first=269.3,duration=0.6,cooldown=9999
+# Shell Spin: 284.2-304 s, up to 48% of ranged
+raid_events+=/movement,name=R_Shell_Spin_5,players_only=1,distance_min=6,first=294.1,duration=4.2,cooldown=9999
+# Shell Spin: 301.5-303.8 s, up to 28% of ranged
+raid_events+=/movement,name=R_Shell_Spin_6,players_only=1,distance_min=6,first=302.2,duration=0.5,cooldown=9999
+# Movement: 319-322.5 s, up to 53% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=320.2,duration=1.1,cooldown=9999

@@ -1,0 +1,86 @@
+# Sszorak (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (277-378 s kills).
+# Kill length: median of 1000 ranked guild kills (each guild's best) = 354 s (10th pct 318, 90th 374). Set your own here:
+max_time=354
+vary_combat_length=0.05
+
+# The boss
+enemy=Sszorak
+
+# Damage taken windows, timed from the aura in the logs. simc ADDS the multiplier: 0.3 = +30%, 1 = +100%
+# Dig In on Sszorak: +30% damage taken, 30/30 kills, start +-0s
+raid_events+=/vulnerable,name=Dig_In_1,target=Sszorak,multiplier=0.3,first=100,duration=25,cooldown=9999
+# Dig In on Sszorak: +30% damage taken, 30/30 kills, start +-0s
+raid_events+=/vulnerable,name=Dig_In_2,target=Sszorak,multiplier=0.3,first=227,duration=25,cooldown=9999
+# Dig In on Sszorak: +30% damage taken, 15/30 kills, start +-0s
+raid_events+=/vulnerable,name=Dig_In_3,target=Sszorak,multiplier=0.3,first=354.1,duration=25,cooldown=9999
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 11.1 s in a 354 s kill
+# Raging Crosswinds: 29.3-51.8 s, up to 17% of melee
+raid_events+=/movement,name=M_Raging_Crosswinds_1,players_only=1,distance_max=6,first=40.3,duration=2.2,cooldown=9999
+# Venomous Surge: 74.5-87 s, up to 17% of melee
+raid_events+=/movement,name=M_Venomous_Surge_1,players_only=1,distance_max=6,first=79.6,duration=1.3,cooldown=9999
+# Venomous Surge: 154.3-167.5 s, up to 15% of melee
+raid_events+=/movement,name=M_Venomous_Surge_2,players_only=1,distance_max=6,first=159.6,duration=1.2,cooldown=9999
+# Raging Crosswinds: 168.5-179.3 s, up to 22% of melee
+raid_events+=/movement,name=M_Raging_Crosswinds_2,players_only=1,distance_max=6,first=173.2,duration=1.4,cooldown=9999
+# Raging Crosswinds: 281.4-307.1 s, up to 19% of melee
+raid_events+=/movement,name=M_Raging_Crosswinds_3,players_only=1,distance_max=6,first=293.2,duration=2.7,cooldown=9999
+# Venomous Surge: 328.1-338.6 s, up to 17% of melee
+raid_events+=/movement,name=M_Venomous_Surge_3,players_only=1,distance_max=6,first=332.7,duration=1.1,cooldown=9999
+# Raging Crosswinds: 342.6-352.4 s, up to 19% of melee
+raid_events+=/movement,name=M_Raging_Crosswinds_4,players_only=1,distance_max=6,first=347.1,duration=1.2,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 43.1 s in a 354 s kill
+# Venomous Surge: 26.8-31.3 s, up to 29% of ranged
+raid_events+=/movement,name=R_Venomous_Surge_1,players_only=1,distance_min=6,first=28.3,duration=0.9,cooldown=9999
+# Raging Crosswinds: 37-52 s, up to 39% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_1,players_only=1,distance_min=6,first=43.2,duration=3.4,cooldown=9999
+# Venomous Surge: 71.8-79 s, up to 40% of ranged
+raid_events+=/movement,name=R_Venomous_Surge_2,players_only=1,distance_min=6,first=74.9,duration=1.6,cooldown=9999
+# Raging Crosswinds: 85.8-100 s, up to 51% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_2,players_only=1,distance_min=6,first=91.3,duration=4.7,cooldown=9999
+# Dig In: 100-105.3 s, up to 82% of ranged
+raid_events+=/movement,name=R_Dig_In_1,players_only=1,distance_min=6,first=102.2,duration=2,cooldown=9999
+# Dig In: 109.5-113.3 s, up to 39% of ranged
+raid_events+=/movement,name=R_Dig_In_2,players_only=1,distance_min=6,first=111.2,duration=0.8,cooldown=9999
+# Movement: 117.3-121.8 s, up to 45% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=118.8,duration=1.3,cooldown=9999
+# Movement: 125-130.3 s, up to 34% of ranged
+raid_events+=/movement,name=R_Movement_2,players_only=1,distance_min=6,first=127,duration=0.9,cooldown=9999
+# Movement: 152-158.3 s, up to 60% of ranged
+raid_events+=/movement,name=R_Movement_3,players_only=1,distance_min=6,first=154,duration=1.8,cooldown=9999
+# Raging Crosswinds: 161.8-181.3 s, up to 40% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_3,players_only=1,distance_min=6,first=170,duration=4.5,cooldown=9999
+# Venomous Surge: 199.5-206.8 s, up to 46% of ranged
+raid_events+=/movement,name=R_Venomous_Surge_3,players_only=1,distance_min=6,first=202.2,duration=1.8,cooldown=9999
+# Raging Crosswinds: 214.3-219.5 s, up to 40% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_4,players_only=1,distance_min=6,first=216.3,duration=1.2,cooldown=9999
+# Raging Crosswinds: 220.5-227 s, up to 41% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_5,players_only=1,distance_min=6,first=222.6,duration=1.7,cooldown=9999
+# Dig In: 229-232 s, up to 62% of ranged
+raid_events+=/movement,name=R_Dig_In_3,players_only=1,distance_min=6,first=229.7,duration=1.2,cooldown=9999
+# Dig In: 233.3-240 s, up to 41% of ranged
+raid_events+=/movement,name=R_Dig_In_4,players_only=1,distance_min=6,first=236.1,duration=1.5,cooldown=9999
+# Movement: 244-248.8 s, up to 64% of ranged
+raid_events+=/movement,name=R_Movement_4,players_only=1,distance_min=6,first=245.8,duration=1.7,cooldown=9999
+# Movement: 252.4-257.4 s, up to 52% of ranged
+raid_events+=/movement,name=R_Movement_5,players_only=1,distance_min=6,first=253.7,duration=1.4,cooldown=9999
+# Movement: 279.9-284.1 s, up to 54% of ranged
+raid_events+=/movement,name=R_Movement_6,players_only=1,distance_min=6,first=281,duration=1.5,cooldown=9999
+# Venomous Surge: 287.9-290.6 s, up to 32% of ranged
+raid_events+=/movement,name=R_Venomous_Surge_4,players_only=1,distance_min=6,first=288.9,duration=0.6,cooldown=9999
+# Raging Crosswinds: 291.9-310.4 s, up to 38% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_6,players_only=1,distance_min=6,first=298.5,duration=4,cooldown=9999
+# Movement: 321.6-332.4 s, up to 46% of ranged
+raid_events+=/movement,name=R_Movement_7,players_only=1,distance_min=6,first=326.6,duration=2.1,cooldown=9999
+# Raging Crosswinds: 342.1-347.1 s, up to 37% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_7,players_only=1,distance_min=6,first=343.9,duration=1.1,cooldown=9999
+# Raging Crosswinds: 348.4-353.4 s, up to 47% of ranged
+raid_events+=/movement,name=R_Raging_Crosswinds_8,players_only=1,distance_min=6,first=350,duration=1.4,cooldown=9999
+# Dig In: 355.6-358.9 s, up to 65% of ranged
+raid_events+=/movement,name=R_Dig_In_5,players_only=1,distance_min=6,first=356.4,duration=1.4,cooldown=9999
+# Dig In: 360.6-366.1 s, up to 41% of ranged
+raid_events+=/movement,name=R_Dig_In_6,players_only=1,distance_min=6,first=362.5,duration=1.1,cooldown=9999

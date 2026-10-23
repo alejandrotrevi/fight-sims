@@ -1,0 +1,17 @@
+{
+  "raid": "The Venomous Abyss",
+  "patch": "12.1.5",
+  "zoneId": 53,
+  "pulled": "2026-10-23",
+  "repo": "https://github.com/alejandrotrevi/fight-sims",
+  "bosses": [
+    { "id": 3470, "name": "Nek'zali the Soulcoiler", "slug": "nekzali", "phases": { "1": "Stage One: Soulcoiler Initiation", "2": "Intermission: Ritual of Awakening", "3": "Stage Two: Uncoiling" } },
+    { "id": 3445, "name": "Entombed Sentinels", "slug": "entombed-sentinels", "phases": { "1": "Stage One", "2": "Intermission: Vitriolic Stasis" } },
+    { "id": 3455, "name": "Vashnik the Malignant", "slug": "vashnik", "phases": {} },
+    { "id": 3497, "name": "The Lost Explorers", "slug": "lost-explorers", "phases": { "1": "The Lost Explorers", "2": "Scrollsage Iku: Binding Anguish", "3": "First Mate Nama: Binding Anguish", "4": "Trader Gebbo: Binding Anguish" } },
+    { "id": 3420, "name": "Sszorak", "slug": "sszorak", "phases": { "1": "Sszorak", "2": "Howling Maelstrom" } },
+    { "id": 3421, "name": "The Twin Fangs", "slug": "twin-fangs", "phases": {} },
+    { "id": 3429, "name": "The Coiled Altar", "slug": "coiled-altar", "phases": { "1": "Stage One: Serpent's Bargain", "2": "Stage Two: Usurper's Reprisal", "3": "Intermission: The Claimed Vessel", "4": "Stage Three: Coiled Union" } },
+    { "id": 3492, "name": "Ula'tek", "slug": "ulatek", "phases": {} }
+  ]
+}

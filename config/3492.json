@@ -1,0 +1,65 @@
+{
+  "slug": "ulatek",
+  "windowed": [
+    "Venomous Heart"
+  ],
+  "vulnerable": {
+    "1299526": {
+      "mult": 1,
+      "label": "Venomous Heart exposed",
+      "measured": "x2.000 in the logs (310 matched hits, same player and ability on the heart vs on Ula'tek)"
+    }
+  },
+  "adds": {
+    "261874": {
+      "countScale": 0.5,
+      "segments": [
+        1
+      ],
+      "why": "the raid splits in two for this phase"
+    },
+    "263535": {
+      "countScale": 0.5,
+      "why": "the raid splits in two for this phase",
+      "segments": [
+        1
+      ]
+    },
+    "264045": {
+      "countScale": 0.5,
+      "why": "the raid splits in two for this phase",
+      "segments": [
+        1
+      ]
+    },
+    "268121": {
+      "countScale": 0.5,
+      "why": "the raid splits in two for this phase",
+      "segments": [
+        1
+      ]
+    }
+  },
+  "asEnemy": {
+    "269200": {
+      "mult": 1,
+      "countScale": 0.5,
+      "label": "Defect: Weakened",
+      "why": "the raid splits in two for this phase",
+      "segments": [
+        1
+      ]
+    }
+  },
+  "notes": "Ula'tek and her tail (Gore Rattle) are cleaved together in phase 1. After each Rage her Venomous Heart is exposed for 20 seconds and takes double damage: measured from the logs as exactly 2.00 times what Ula'tek takes from the same player and ability. In phases 2 and 3 she is gone and each half of the raid kills its own adds, so those adds count half. The Weakened Doomscales take +100% damage, which simc can only apply to a target, so one per half is simulated as a target. Kills end on the third heart window, close to the 609-second enrage.",
+  "heroic": {
+    "vulnerable": {
+      "1299526": {
+        "mult": 1,
+        "label": "Venomous Heart exposed",
+        "measured": "x2.000 in the logs (439 matched hits, same player and ability on the heart vs on Ula'tek)"
+      }
+    },
+    "notes": "Ula'tek and her tail (Gore Rattle) are cleaved together in phase 1. After each Rage her Venomous Heart is exposed for 20 seconds and takes double damage: measured from the logs as exactly 2.00 times what Ula'tek takes from the same player and ability. In phases 2 and 3 she is gone and each half of the raid kills its own adds, so those adds count half. The Weakened Doomscales take +100% damage, which simc can only apply to a target, so one per half is simulated as a target."
+  }
+}

@@ -1,0 +1,197 @@
+# Ula'tek (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (565-612 s kills).
+# Kill length: median of 196 ranked guild kills (each guild's best) = 598 s (10th pct 591, 90th 603). Set your own here:
+max_time=598
+vary_combat_length=0.05
+
+# Bosses (all attackable at once unless an event below says otherwise)
+enemy=Ula_tek
+enemy=Gore_Rattle
+enemy=Venomous_Heart
+enemy=Weakened_Doomscale
+
+# Adds: spawn = first hit on the wave, duration = first hit to last hit (median), count = median wave size
+# Exposure (count x duration) calibrated x0.373: simc has no positions, so every area spell reaches every add.
+# This makes the share of damage that goes into adds match real players of the same spec. Measured values: boss page.
+# Blightscale Wretch x1: 30/30 kills, spawn +-0.4s
+raid_events+=/adds,name=Blightscale_Wretch_1,count=1,first=3.6,duration=30.5,cooldown=9999,health=1e10
+# Blightscale Spawn x3: 30/30 kills, spawn +-0.2s
+raid_events+=/adds,name=Blightscale_Spawn_1,count=3,first=10.5,duration=16.6,cooldown=9999,health=1e10
+# Blightscale Rawling x3: 30/30 kills, spawn +-0.1s
+raid_events+=/adds,name=Blightscale_Rawling_1,count=3,first=40.6,duration=18.2,cooldown=9999,health=1e10
+# Blightscale Wretch x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Blightscale_Wretch_2,count=1,first=73,duration=31.1,cooldown=9999,health=1e10
+# Blightscale Spawn x8: 30/30 kills, spawn +-0.2s
+raid_events+=/adds,name=Blightscale_Spawn_2,count=8,first=80.4,duration=29.7,cooldown=9999,health=1e10
+# Blightscale Rawling x3: 30/30 kills, spawn +-0.1s
+raid_events+=/adds,name=Blightscale_Rawling_2,count=3,first=134.6,duration=18.6,cooldown=9999,health=1e10
+# Doomscale Warden x1: 30/30 kills, spawn +-0.2s, 2 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Doomscale_Warden_1,count=1,first=175.1,duration=44.3,cooldown=9999,health=1e10
+# Blightscale Spawn x10: 30/30 kills, spawn +-0.5s, 20 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Spawn_3,count=10,first=179.1,duration=39,cooldown=9999,health=1e10
+# Blightscale Clutch x3: 30/30 kills, spawn +-0.5s, 5 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Clutch_1,count=3,first=183,duration=7.3,cooldown=9999,health=1e10
+# Blightscale Rawling x3: 30/30 kills, spawn +-0.7s, 5 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Rawling_3,count=3,first=189.8,duration=19,cooldown=9999,health=1e10
+# Blightscale Rawling x8: 30/30 kills, spawn +-2.1s, 15 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Rawling_4,count=8,first=229,duration=19.1,cooldown=9999,health=1e10
+# Blightscale Spawn x2: 30/30 kills, spawn +-2.8s, 4 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Spawn_4,count=2,first=240.5,duration=11.2,cooldown=9999,health=1e10
+# Blightscale Clutch x2: 17/30 kills, spawn +-1.9s, 4 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Clutch_2,count=2,first=253.2,duration=7.1,cooldown=9999,health=1e10
+# Blightscale Rawling x2: 29/30 kills, spawn +-6.5s, 4 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Blightscale_Rawling_5,count=2,first=260.2,duration=25.4,cooldown=9999,health=1e10
+# Weakened Doomscale x1: 30/30 kills, spawn +-2.5s, 4 spawn x 0.5 (the raid splits in two for this phase)
+raid_events+=/adds,name=Weakened_Doomscale_1,count=1,first=269.2,duration=44.4,cooldown=9999,health=1e10
+# Blightscale Spawn x8: 30/30 kills, spawn +-0.1s
+raid_events+=/adds,name=Blightscale_Spawn_5,count=8,first=324.5,duration=16.2,cooldown=9999,health=1e10
+# Blightscale Rawling x8: 30/30 kills, spawn +-1s
+raid_events+=/adds,name=Blightscale_Rawling_6,count=8,first=337.1,duration=19.7,cooldown=9999,health=1e10
+# Slithering Clutch x1: 30/30 kills, spawn +-0.2s
+raid_events+=/adds,name=Slithering_Clutch_1,count=1,first=382.3,duration=9.7,cooldown=9999,health=1e10
+# Blightscale Rawling x1: 30/30 kills, spawn +-0.9s
+raid_events+=/adds,name=Blightscale_Rawling_7,count=1,first=388.3,duration=15.4,cooldown=9999,health=1e10
+# Slithering Clutch x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Slithering_Clutch_2,count=1,first=412.3,duration=10.4,cooldown=9999,health=1e10
+# Blightscale Rawling x1: 30/30 kills, spawn +-1s
+raid_events+=/adds,name=Blightscale_Rawling_8,count=1,first=419.1,duration=22.5,cooldown=9999,health=1e10
+# Blightscale Wretch x1: 30/30 kills, spawn +-2.3s
+raid_events+=/adds,name=Blightscale_Wretch_3,count=1,first=432.9,duration=30.2,cooldown=9999,health=1e10
+# Slithering Clutch x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Slithering_Clutch_3,count=1,first=510.4,duration=4.1,cooldown=9999,health=1e10
+# Blightscale Shrieker x1: 30/30 kills, spawn +-0.6s
+raid_events+=/adds,name=Blightscale_Shrieker_1,count=1,first=511.3,duration=17.1,cooldown=9999,health=1e10
+# Blightscale Rawling x1: 30/30 kills, spawn +-1s
+raid_events+=/adds,name=Blightscale_Rawling_9,count=1,first=515.9,duration=8.3,cooldown=9999,health=1e10
+
+# Boss out of reach: absent for a whole phase, or taking under 35% of its normal damage
+# Gore Rattle: 30/30 kills, damage falls to 0%
+raid_events+=/invulnerable,name=Gore_Rattle_away_1,target=Gore_Rattle,first=0.1,duration=20,cooldown=9999
+# Venomous Heart is only a target in its measured windows
+raid_events+=/invulnerable,name=Venomous_Heart_away_1,target=Venomous_Heart,first=0.1,duration=145,cooldown=9999
+# Weakened Doomscale is only a target in its measured windows
+raid_events+=/invulnerable,name=Weakened_Doomscale_away_1,target=Weakened_Doomscale,first=0.1,duration=269.2,cooldown=9999
+# Ula'tek: 30/30 kills, damage falls to 20%
+raid_events+=/invulnerable,name=Ula_tek_away_1,target=Ula_tek,first=36,duration=10,cooldown=9999
+# Gore Rattle: 30/30 kills, damage falls to 0%
+raid_events+=/invulnerable,name=Gore_Rattle_away_2,target=Gore_Rattle,first=78,duration=12,cooldown=9999
+# Ula'tek: 30/30 kills, damage falls to 15%
+raid_events+=/invulnerable,name=Ula_tek_away_2,target=Ula_tek,first=80,duration=7.5,cooldown=9999
+# Ula'tek: 25/30 kills, damage falls to 15%
+raid_events+=/invulnerable,name=Ula_tek_away_3,target=Ula_tek,first=132,duration=9,cooldown=9999
+# Gore Rattle: 30/30 kills, damage falls to 0%
+raid_events+=/invulnerable,name=Gore_Rattle_away_3,target=Gore_Rattle,first=143,duration=31.5,cooldown=9999
+# Venomous Heart is only a target in its measured windows
+raid_events+=/invulnerable,name=Venomous_Heart_away_2,target=Venomous_Heart,first=166,duration=128,cooldown=9999
+# Ula'tek: 16/30 kills, damage falls to 0%
+raid_events+=/invulnerable,name=Ula_tek_away_4,target=Ula_tek,first=167,duration=8,cooldown=9999
+# Ula'tek absent this phase outside its measured window (present 22% of it)
+raid_events+=/invulnerable,name=Ula_tek_away_5,target=Ula_tek,first=174.1,duration=112.9,cooldown=9999
+# Gore Rattle absent this phase (present 0% of it)
+raid_events+=/invulnerable,name=Gore_Rattle_away_4,target=Gore_Rattle,first=174.1,duration=144.9,cooldown=9999
+# Weakened Doomscale is only a target in its measured windows
+raid_events+=/invulnerable,name=Weakened_Doomscale_away_2,target=Weakened_Doomscale,first=313.6,duration=320.3,cooldown=9999
+# Venomous Heart is only a target in its measured windows
+raid_events+=/invulnerable,name=Venomous_Heart_away_3,target=Venomous_Heart,first=317,duration=266.8,cooldown=9999
+# Ula'tek absent this phase (present 4% of it)
+raid_events+=/invulnerable,name=Ula_tek_away_6,target=Ula_tek,first=319,duration=53.5,cooldown=9999
+# Gore Rattle absent this phase (present 0% of it)
+raid_events+=/invulnerable,name=Gore_Rattle_away_5,target=Gore_Rattle,first=319,duration=53.5,cooldown=9999
+# Gore Rattle absent this phase (present 0% of it)
+raid_events+=/invulnerable,name=Gore_Rattle_away_6,target=Gore_Rattle,first=372.5,duration=261.4,cooldown=9999
+# Venomous Heart is only a target in its measured windows
+raid_events+=/invulnerable,name=Venomous_Heart_away_4,target=Venomous_Heart,first=599.8,duration=34.1,cooldown=9999
+
+# Damage taken windows, timed from the aura in the logs. simc ADDS the multiplier: 0.3 = +30%, 1 = +100%
+# Venomous Heart exposed on Venomous Heart: +100% damage taken, 30/30 kills, start +-0s
+raid_events+=/vulnerable,name=Venomous_Heart_exposed_1,target=Venomous_Heart,multiplier=1,first=145.5,duration=20,cooldown=9999
+# Defect: Weakened on Weakened Doomscale: +100% damage taken, 30/30 kills, start +-2.5s
+raid_events+=/vulnerable,name=Defect_Weakened_1,target=Weakened_Doomscale,multiplier=1,first=269.2,duration=44.4,cooldown=9999
+# Venomous Heart exposed on Venomous Heart: +100% damage taken, 30/30 kills, start +-0s
+raid_events+=/vulnerable,name=Venomous_Heart_exposed_2,target=Venomous_Heart,multiplier=1,first=294.5,duration=20,cooldown=9999
+# Venomous Heart exposed on Venomous Heart: +100% damage taken, 28/30 kills, start +-0.3s
+raid_events+=/vulnerable,name=Venomous_Heart_exposed_3,target=Venomous_Heart,multiplier=1,first=583.7,duration=20,cooldown=9999
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 90.9 s in a 598 s kill
+# Movement: 11.3-16.8 s, up to 19% of melee
+raid_events+=/movement,name=M_Movement_1,players_only=1,distance_max=6,first=13.2,duration=0.6,cooldown=9999
+# Mother's Wrath: 24.8-33.3 s, up to 13% of melee
+raid_events+=/movement,name=M_Mother_s_Wrath_1,players_only=1,distance_max=6,first=29.2,duration=0.6,cooldown=9999
+# Mephitic Thrash: 36.3-50.8 s, up to 29% of melee
+raid_events+=/movement,name=M_Mephitic_Thrash_1,players_only=1,distance_max=6,first=44,duration=1.8,cooldown=9999
+# Toxic Incubation: 75.8-93 s, up to 29% of melee
+raid_events+=/movement,name=M_Toxic_Incubation_1,players_only=1,distance_max=6,first=82.3,duration=2.6,cooldown=9999
+# Spectral Coils: 124.8-146.5 s, up to 29% of melee
+raid_events+=/movement,name=M_Spectral_Coils_1,players_only=1,distance_max=6,first=132.9,duration=3.4,cooldown=9999
+# Movement: 165.5-174.3 s, up to 100% of melee
+raid_events+=/movement,name=M_Movement_2,players_only=1,distance_max=6,first=166.4,duration=7.7,cooldown=9999
+# Movement: 174.1-186.4 s, up to 100% of melee
+raid_events+=/movement,name=M_Movement_3,players_only=1,distance_max=6,first=175.4,duration=5.6,cooldown=9999
+# Movement: 216.6-287.4 s, up to 100% of melee
+raid_events+=/movement,name=M_Movement_4,players_only=1,distance_max=6,first=232.3,duration=28.7,cooldown=9999
+# Call of the Serpent: 319.8-326.3 s, up to 72% of melee
+raid_events+=/movement,name=M_Call_of_the_Serpent_1,players_only=1,distance_max=6,first=321.1,duration=3.5,cooldown=9999
+# Movement: 331.5-346.3 s, up to 42% of melee
+raid_events+=/movement,name=M_Movement_5,players_only=1,distance_max=6,first=336.6,duration=4.5,cooldown=9999
+# Movement: 363.3-373.3 s, up to 100% of melee
+raid_events+=/movement,name=M_Movement_6,players_only=1,distance_max=6,first=364.1,duration=6.7,cooldown=9999
+# Movement: 372.5-385.5 s, up to 58% of melee
+raid_events+=/movement,name=M_Movement_7,players_only=1,distance_max=6,first=374.9,duration=1.6,cooldown=9999
+# Submerge: 431-452.3 s, up to 79% of melee
+raid_events+=/movement,name=M_Submerge_1,players_only=1,distance_max=6,first=437.8,duration=7.3,cooldown=9999
+# Circling Prey: 479.5-502.8 s, up to 72% of melee
+raid_events+=/movement,name=M_Circling_Prey_1,players_only=1,distance_max=6,first=488.1,duration=5.6,cooldown=9999
+# Submerge: 536.8-564.8 s, up to 100% of melee
+raid_events+=/movement,name=M_Submerge_2,players_only=1,distance_max=6,first=547.5,duration=10.7,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 98.9 s in a 598 s kill
+# Spectral Coils: 28.3-36.8 s, up to 22% of ranged
+raid_events+=/movement,name=R_Spectral_Coils_1,players_only=1,distance_min=6,first=31.6,duration=1.1,cooldown=9999
+# Spectral Coils: 40-48.8 s, up to 40% of ranged
+raid_events+=/movement,name=R_Spectral_Coils_2,players_only=1,distance_min=6,first=42.7,duration=2.1,cooldown=9999
+# Movement: 61.3-66.8 s, up to 28% of ranged
+raid_events+=/movement,name=R_Movement_1,players_only=1,distance_min=6,first=63.2,duration=0.7,cooldown=9999
+# Spectral Coils: 108-152.8 s, up to 90% of ranged
+raid_events+=/movement,name=R_Spectral_Coils_3,players_only=1,distance_min=6,first=127.5,duration=9.5,cooldown=9999
+# Movement: 164.5-174.3 s, up to 99% of ranged
+raid_events+=/movement,name=R_Movement_2,players_only=1,distance_min=6,first=165,duration=8.8,cooldown=9999
+# Movement: 174.1-184.6 s, up to 87% of ranged
+raid_events+=/movement,name=R_Movement_3,players_only=1,distance_min=6,first=175.2,duration=6.5,cooldown=9999
+# Movement: 218.9-240.1 s, up to 100% of ranged
+raid_events+=/movement,name=R_Movement_4,players_only=1,distance_min=6,first=221.3,duration=13.3,cooldown=9999
+# Movement: 247.6-251.4 s, up to 23% of ranged
+raid_events+=/movement,name=R_Movement_5,players_only=1,distance_min=6,first=249.4,duration=0.5,cooldown=9999
+# Movement: 257.1-272.4 s, up to 48% of ranged
+raid_events+=/movement,name=R_Movement_6,players_only=1,distance_min=6,first=262.8,duration=3.9,cooldown=9999
+# Movement: 273.4-287.9 s, up to 49% of ranged
+raid_events+=/movement,name=R_Movement_7,players_only=1,distance_min=6,first=277.9,duration=4.5,cooldown=9999
+# Venomous Heart: 294.4-298.1 s, up to 64% of ranged
+raid_events+=/movement,name=R_Venomous_Heart_1,players_only=1,distance_min=6,first=295.2,duration=1.4,cooldown=9999
+# Movement: 313.9-316.9 s, up to 64% of ranged
+raid_events+=/movement,name=R_Movement_8,players_only=1,distance_min=6,first=314.4,duration=0.9,cooldown=9999
+# Call of the Serpent: 319-326.5 s, up to 76% of ranged
+raid_events+=/movement,name=R_Call_of_the_Serpent_1,players_only=1,distance_min=6,first=320.2,duration=4.2,cooldown=9999
+# Movement: 338.5-349.5 s, up to 49% of ranged
+raid_events+=/movement,name=R_Movement_9,players_only=1,distance_min=6,first=342.7,duration=3.3,cooldown=9999
+# Movement: 362-373.3 s, up to 100% of ranged
+raid_events+=/movement,name=R_Movement_10,players_only=1,distance_min=6,first=362.8,duration=9.2,cooldown=9999
+# Movement: 372.5-379.3 s, up to 69% of ranged
+raid_events+=/movement,name=R_Movement_11,players_only=1,distance_min=6,first=373.4,duration=2,cooldown=9999
+# Circling Prey: 414.3-449.3 s, up to 56% of ranged
+raid_events+=/movement,name=R_Circling_Prey_1,players_only=1,distance_min=6,first=428.3,duration=9.2,cooldown=9999
+# Serpent's Bite: 459.8-464 s, up to 33% of ranged
+raid_events+=/movement,name=R_Serpent_s_Bite_1,players_only=1,distance_min=6,first=462,duration=0.6,cooldown=9999
+# Caustic Waves: 477-481 s, up to 43% of ranged
+raid_events+=/movement,name=R_Caustic_Waves_1,players_only=1,distance_min=6,first=478.6,duration=1,cooldown=9999
+# Circling Prey: 482.5-497.5 s, up to 65% of ranged
+raid_events+=/movement,name=R_Circling_Prey_2,players_only=1,distance_min=6,first=486.1,duration=4.4,cooldown=9999
+# Caustic Waves: 526-540.3 s, up to 38% of ranged
+raid_events+=/movement,name=R_Caustic_Waves_2,players_only=1,distance_min=6,first=532.2,duration=2.2,cooldown=9999
+# Submerge: 552.8-558.3 s, up to 94% of ranged
+raid_events+=/movement,name=R_Submerge_1,players_only=1,distance_min=6,first=553.6,duration=3.5,cooldown=9999
+# Caustic Waves: 571-574.8 s, up to 31% of ranged
+raid_events+=/movement,name=R_Caustic_Waves_3,players_only=1,distance_min=6,first=572.5,duration=0.7,cooldown=9999
+# Venomous Heart: 576.8-598 s, up to 64% of ranged
+raid_events+=/movement,name=R_Venomous_Heart_2,players_only=1,distance_min=6,first=584.6,duration=5.4,cooldown=9999

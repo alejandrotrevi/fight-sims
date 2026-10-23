@@ -1,0 +1,384 @@
+{
+ "3470_mythic": {
+  "factor": 0.447,
+  "previous": 0.45,
+  "step": 0.992,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.084,
+    "real": 0.083,
+    "players": 17
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.103,
+    "real": 0.08,
+    "players": 30
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.104,
+    "real": 0.175,
+    "players": 48
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.189,
+    "real": 0.142,
+    "players": 42
+   }
+  ]
+ },
+ "3445_mythic": {
+  "factor": 1.098,
+  "previous": 1.116,
+  "step": 0.984,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.088,
+    "real": 0.102,
+    "players": 18
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.147,
+    "real": 0.142,
+    "players": 33
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.131,
+    "real": 0.142,
+    "players": 53
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.218,
+    "real": 0.174,
+    "players": 25
+   }
+  ]
+ },
+ "3455_mythic": {
+  "factor": 0.905,
+  "previous": 0.931,
+  "step": 0.972,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.211,
+    "real": 0.25,
+    "players": 20
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.284,
+    "real": 0.288,
+    "players": 37
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.336,
+    "real": 0.332,
+    "players": 52
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.401,
+    "real": 0.324,
+    "players": 40
+   }
+  ]
+ },
+ "3497_mythic": {
+  "factor": 1,
+  "note": "no adds to calibrate, or too few real players of the sample specs"
+ },
+ "3420_mythic": {
+  "factor": 1,
+  "note": "no adds to calibrate, or too few real players of the sample specs"
+ },
+ "3421_mythic": {
+  "factor": 0.421,
+  "previous": 0.437,
+  "step": 0.963,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.106,
+    "real": 0.11,
+    "players": 18
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.064,
+    "real": 0.083,
+    "players": 39
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.106,
+    "real": 0.132,
+    "players": 16
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.145,
+    "real": 0.076,
+    "players": 39
+   }
+  ]
+ },
+ "3429_mythic": {
+  "factor": 0.2,
+  "previous": 0.2,
+  "step": 0.639,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.03,
+    "real": 0.017,
+    "players": 23
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.027,
+    "real": 0.014,
+    "players": 36
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.048,
+    "real": 0.044,
+    "players": 50
+   }
+  ]
+ },
+ "3492_mythic": {
+  "factor": 0.373,
+  "previous": 0.371,
+  "step": 1.005,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.379,
+    "real": 0.383,
+    "players": 29
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.381,
+    "real": 0.444,
+    "players": 37
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.398,
+    "real": 0.468,
+    "players": 56
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.58,
+    "real": 0.445,
+    "players": 43
+   }
+  ]
+ },
+ "3470_heroic": {
+  "factor": 0.395,
+  "previous": 0.394,
+  "step": 1.003,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.073,
+    "real": 0.083,
+    "players": 21
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.092,
+    "real": 0.069,
+    "players": 35
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.114,
+    "real": 0.14,
+    "players": 40
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.115,
+    "real": 0.11,
+    "players": 38
+   }
+  ]
+ },
+ "3445_heroic": {
+  "factor": 1.218,
+  "previous": 1.191,
+  "step": 1.023,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.07,
+    "real": 0.104,
+    "players": 16
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.11,
+    "real": 0.111,
+    "players": 54
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.122,
+    "real": 0.112,
+    "players": 48
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.157,
+    "real": 0.126,
+    "players": 31
+   }
+  ]
+ },
+ "3455_heroic": {
+  "factor": 0.873,
+  "previous": 0.872,
+  "step": 1.001,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.117,
+    "real": 0.164,
+    "players": 22
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.18,
+    "real": 0.161,
+    "players": 43
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.23,
+    "real": 0.272,
+    "players": 66
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.29,
+    "real": 0.202,
+    "players": 47
+   }
+  ]
+ },
+ "3497_heroic": {
+  "factor": 1,
+  "note": "no adds to calibrate, or too few real players of the sample specs"
+ },
+ "3420_heroic": {
+  "factor": 1,
+  "note": "no adds to calibrate, or too few real players of the sample specs"
+ },
+ "3421_heroic": {
+  "factor": 1.03,
+  "previous": 1.068,
+  "step": 0.964,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.033,
+    "real": 0.089,
+    "players": 18
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.053,
+    "real": 0.038,
+    "players": 49
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.098,
+    "real": 0.105,
+    "players": 39
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.178,
+    "real": 0.079,
+    "players": 41
+   }
+  ]
+ },
+ "3429_heroic": {
+  "factor": 0.721,
+  "previous": 0.724,
+  "step": 0.996,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.021,
+    "real": 0.016,
+    "players": 29
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.015,
+    "real": 0.017,
+    "players": 45
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.014,
+    "real": 0.024,
+    "players": 42
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.027,
+    "real": 0.018,
+    "players": 39
+   }
+  ]
+ },
+ "3492_heroic": {
+  "factor": 0.2,
+  "previous": 0.276,
+  "step": 0.56,
+  "basis": [
+   {
+    "spec": "DemonHunter-Havoc",
+    "sim": 0.375,
+    "real": 0.237,
+    "players": 24
+   },
+   {
+    "spec": "Warrior-Arms",
+    "sim": 0.349,
+    "real": 0.242,
+    "players": 54
+   },
+   {
+    "spec": "Mage-Arcane",
+    "sim": 0.382,
+    "real": 0.281,
+    "players": 53
+   },
+   {
+    "spec": "Warlock-Demonology",
+    "sim": 0.362,
+    "real": 0.223,
+    "players": 46
+   }
+  ]
+ }
+}

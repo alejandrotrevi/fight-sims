@@ -1,0 +1,95 @@
+# The Twin Fangs (mythic) - measured fight profile for SimulationCraft / Raidbots
+# Raidbots: Fight Style = Casting Patchwerk (NOT Patchwerk: it deletes raid events), Number of Bosses = 1,
+#   then Custom APL and SimC Options > tick "SimC Expert Mode" > paste this into Script Footer.
+# Measured from 30 mythic kills on Warcraft Logs, patch 12.1.5 (324-467 s kills).
+# Kill length: median of 945 ranked guild kills (each guild's best) = 394 s (10th pct 359, 90th 416). Set your own here:
+max_time=394
+vary_combat_length=0.05
+
+# Bosses (all attackable at once unless an event below says otherwise)
+enemy=Vexhul
+enemy=Ithraz
+
+# Adds: spawn = first hit on the wave, duration = first hit to last hit (median), count = median wave size
+# Exposure (count x duration) calibrated x0.421: simc has no positions, so every area spell reaches every add.
+# This makes the share of damage that goes into adds match real players of the same spec. Measured values: boss page.
+# Spawn of Vexhul x1: 30/30 kills, spawn +-0.4s
+raid_events+=/adds,name=Spawn_of_Vexhul_1,count=1,first=34.8,duration=14.7,cooldown=9999,health=1e10
+# Broodling of Ithraz x4: 30/30 kills, spawn +-0.2s
+raid_events+=/adds,name=Broodling_of_Ithraz_1,count=4,first=36.1,duration=4.3,cooldown=9999,health=1e10
+# Spawn of Vexhul x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spawn_of_Vexhul_2,count=1,first=95.9,duration=13.8,cooldown=9999,health=1e10
+# Broodling of Ithraz x4: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Broodling_of_Ithraz_2,count=4,first=97.3,duration=4.5,cooldown=9999,health=1e10
+# Spawn of Vexhul x1: 30/30 kills, spawn +-0.2s
+raid_events+=/adds,name=Spawn_of_Vexhul_3,count=1,first=190.1,duration=13,cooldown=9999,health=1e10
+# Broodling of Ithraz x4: 30/30 kills, spawn +-0.1s
+raid_events+=/adds,name=Broodling_of_Ithraz_3,count=4,first=191.2,duration=4.6,cooldown=9999,health=1e10
+# Spawn of Vexhul x1: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spawn_of_Vexhul_4,count=1,first=251,duration=14.4,cooldown=9999,health=1e10
+# Broodling of Ithraz x4: 30/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Broodling_of_Ithraz_4,count=4,first=252.1,duration=4.8,cooldown=9999,health=1e10
+# Spawn of Vexhul x1: 26/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Spawn_of_Vexhul_5,count=1,first=345.1,duration=17.3,cooldown=9999,health=1e10
+# Broodling of Ithraz x4: 28/30 kills, spawn +-0.3s
+raid_events+=/adds,name=Broodling_of_Ithraz_5,count=4,first=346.2,duration=4.5,cooldown=9999,health=1e10
+
+# Boss out of reach: absent for a whole phase, or taking under 35% of its normal damage
+# Ithraz: 30/30 kills, damage falls to 10%
+raid_events+=/invulnerable,name=Ithraz_away_1,target=Ithraz,first=135,duration=17,cooldown=9999
+# Ithraz: 29/30 kills, damage falls to 8%
+raid_events+=/invulnerable,name=Ithraz_away_2,target=Ithraz,first=290,duration=15,cooldown=9999
+
+# Melee movement (distance_max=6: melee only): time out of melee range, from auto-attack gaps; 20.3 s in a 394 s kill
+# Stir the Depths: 106-112.3 s, up to 18% of melee
+raid_events+=/movement,name=M_Stir_the_Depths_1,players_only=1,distance_max=6,first=108.3,duration=0.7,cooldown=9999
+# Vile Flood: 125-160 s, up to 73% of melee
+raid_events+=/movement,name=M_Vile_Flood_1,players_only=1,distance_max=6,first=137.5,duration=7.2,cooldown=9999
+# Rouse the Brood: 189-193.5 s, up to 19% of melee
+raid_events+=/movement,name=M_Rouse_the_Brood_1,players_only=1,distance_max=6,first=190.7,duration=0.5,cooldown=9999
+# Stir the Depths: 200-205.8 s, up to 24% of melee
+raid_events+=/movement,name=M_Stir_the_Depths_2,players_only=1,distance_max=6,first=202.2,duration=0.8,cooldown=9999
+# Coiling Ichor: 247.5-270.8 s, up to 24% of melee
+raid_events+=/movement,name=M_Coiling_Ichor_1,players_only=1,distance_max=6,first=259.3,duration=2.4,cooldown=9999
+# Sanguine Storm: 285.8-316.3 s, up to 68% of melee
+raid_events+=/movement,name=M_Sanguine_Storm_1,players_only=1,distance_max=6,first=295.3,duration=7.1,cooldown=9999
+# Rouse the Brood: 344-351.3 s, up to 13% of melee
+raid_events+=/movement,name=M_Rouse_the_Brood_2,players_only=1,distance_max=6,first=346.9,duration=0.6,cooldown=9999
+# Stir the Depths: 356.3-366.8 s, up to 18% of melee
+raid_events+=/movement,name=M_Stir_the_Depths_3,players_only=1,distance_max=6,first=361.2,duration=1,cooldown=9999
+
+# Ranged movement (distance_min=6: ranged only): time casters could not hard-cast, from cast gaps; 57.8 s in a 394 s kill
+# Coiling Ichor: 36.5-48.3 s, up to 35% of ranged
+raid_events+=/movement,name=R_Coiling_Ichor_1,players_only=1,distance_min=6,first=40.6,duration=2.7,cooldown=9999
+# Ravenous Feast: 60.5-64.8 s, up to 56% of ranged
+raid_events+=/movement,name=R_Ravenous_Feast_1,players_only=1,distance_min=6,first=61.8,duration=1.4,cooldown=9999
+# Caustic Deluge: 75.5-83 s, up to 31% of ranged
+raid_events+=/movement,name=R_Caustic_Deluge_1,players_only=1,distance_min=6,first=77.4,duration=1.1,cooldown=9999
+# Coiling Ichor: 95.8-110 s, up to 56% of ranged
+raid_events+=/movement,name=R_Coiling_Ichor_2,players_only=1,distance_min=6,first=100.9,duration=4.8,cooldown=9999
+# Ravenous Feast: 119.5-126.8 s, up to 67% of ranged
+raid_events+=/movement,name=R_Ravenous_Feast_2,players_only=1,distance_min=6,first=122.2,duration=2.2,cooldown=9999
+# Vile Flood: 132-161.5 s, up to 54% of ranged
+raid_events+=/movement,name=R_Vile_Flood_1,players_only=1,distance_min=6,first=141,duration=8.1,cooldown=9999
+# Caustic Deluge: 166.5-174 s, up to 31% of ranged
+raid_events+=/movement,name=R_Caustic_Deluge_2,players_only=1,distance_min=6,first=169.7,duration=1.2,cooldown=9999
+# Coiling Ichor: 190.5-203.5 s, up to 40% of ranged
+raid_events+=/movement,name=R_Coiling_Ichor_3,players_only=1,distance_min=6,first=195.4,duration=3,cooldown=9999
+# Ravenous Feast: 211.5-221 s, up to 54% of ranged
+raid_events+=/movement,name=R_Ravenous_Feast_3,players_only=1,distance_min=6,first=215.8,duration=1.8,cooldown=9999
+# Caustic Deluge: 228.8-238.8 s, up to 45% of ranged
+raid_events+=/movement,name=R_Caustic_Deluge_3,players_only=1,distance_min=6,first=231.6,duration=2.7,cooldown=9999
+# Coiling Ichor: 251.3-266.5 s, up to 55% of ranged
+raid_events+=/movement,name=R_Coiling_Ichor_4,players_only=1,distance_min=6,first=257,duration=4.3,cooldown=9999
+# Ravenous Feast: 274.8-281.8 s, up to 73% of ranged
+raid_events+=/movement,name=R_Ravenous_Feast_4,players_only=1,distance_min=6,first=277.2,duration=2.3,cooldown=9999
+# Sanguine Storm: 286-312.3 s, up to 84% of ranged
+raid_events+=/movement,name=R_Sanguine_Storm_1,players_only=1,distance_min=6,first=292.3,duration=11.2,cooldown=9999
+# Caustic Deluge: 322.8-331 s, up to 40% of ranged
+raid_events+=/movement,name=R_Caustic_Deluge_4,players_only=1,distance_min=6,first=325.5,duration=2.2,cooldown=9999
+# Coiling Ichor: 347-364.3 s, up to 44% of ranged
+raid_events+=/movement,name=R_Coiling_Ichor_5,players_only=1,distance_min=6,first=353.2,duration=3.7,cooldown=9999
+# Ravenous Feast: 367-380.8 s, up to 60% of ranged
+raid_events+=/movement,name=R_Ravenous_Feast_5,players_only=1,distance_min=6,first=370.7,duration=3.7,cooldown=9999
+# Caustic Deluge: 383.5-392.8 s, up to 28% of ranged
+raid_events+=/movement,name=R_Caustic_Deluge_5,players_only=1,distance_min=6,first=387.6,duration=1.4,cooldown=9999

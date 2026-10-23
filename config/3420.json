@@ -1,0 +1,19 @@
+{
+  "slug": "sszorak",
+  "vulnerable": {
+    "1286033": {
+      "mult": 0.3,
+      "measured": "x1.300 in the logs (548 matched hits, same player and ability inside vs outside the window)"
+    }
+  },
+  "notes": "One boss on a fixed 127-second cycle. Every Howling Maelstrom he digs in and takes 30% more damage for 25 seconds. Most movement comes from targeted debuffs (Venomous Surge, Raging Crosswinds) that send a few players out at a time.",
+  "heroic": {
+    "vulnerable": {
+      "1286033": {
+        "mult": 0.3,
+        "measured": "x1.300 in the logs (635 matched hits, same player and ability inside vs outside the window)"
+      }
+    },
+    "notes": "One boss on a fixed 138-second cycle (mythic: 127). Every Howling Maelstrom he digs in and takes 30% more damage for 25 seconds. Most movement comes from targeted debuffs (Venomous Surge, Raging Crosswinds) that send a few players out at a time."
+  }
+}

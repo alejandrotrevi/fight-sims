@@ -1,0 +1,7 @@
+{
+  "slug": "vashnik",
+  "notes": "One boss with a lot of add damage. Each Imbibe (every 84 seconds) releases eight Shrouded Venoms and three Burning Venoms on mythic, and all of them have to die before they reach the center. About a third of the raid's damage goes into them.",
+  "heroic": {
+    "notes": "One boss with a lot of add damage. Each Imbibe (every 84 seconds) releases five Shrouded Venoms and two Burning Venoms on heroic (mythic: eight and three), and all of them have to die before they reach the center."
+  }
+}
