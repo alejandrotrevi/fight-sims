@@ -26,20 +26,30 @@ function load(b, diff) {
   return { A, E, C, phaseNames: b.phases || {}, simc: fs.readFileSync(path.join(ROOT, simcPath), 'utf8'), simcFile: `${b.slug}_${diff}.simc` };
 }
 
-function layout(title, body, { rel = '', desc = '' } = {}) {
-  return `<!doctype html>
+// the mark: three boss-mod bars, the way a fight looks on screen
+const MARK = `<svg width="26" height="22" viewBox="0 0 26 22" aria-hidden="true"><rect x="0" y="1" width="26" height="5" rx="2" fill="var(--accent)"/><rect x="0" y="8.5" width="17" height="5" rx="2" fill="var(--lane-adds)"/><rect x="0" y="16" width="22" height="5" rx="2" fill="var(--lane-melee)"/></svg>`;
+const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d7356'/%3E%3Crect x='6' y='8' width='20' height='4' rx='1.5' fill='white'/%3E%3Crect x='6' y='14' width='13' height='4' rx='1.5' fill='%23f1b360'/%3E%3Crect x='6' y='20' width='17' height='4' rx='1.5' fill='%2393b7f5'/%3E%3C/svg%3E";
+const FONTS = 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap';
+
+// fragment: the page without its document skeleton, for the claude.ai preview, which wraps the main page itself
+function layout(title, body, { rel = '', desc = '', fragment = false } = {}) {
+  const head = `<title>${esc(title)}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="${esc(desc)}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="${FONTS}">
+<link rel="stylesheet" href="${rel}assets/style.css">
+<link rel="icon" href="${FAVICON}">`;
+  return `${fragment ? head : `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)}</title>
-<meta name="description" content="${esc(desc)}">
-<link rel="stylesheet" href="${rel}assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f8f4e'/%3E%3Cpath d='M6 22h4l3-9 4 13 3-8h6' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+${head}
 </head>
-<body>
+<body>`}
 <header class="site"><div class="wrap">
-  <a class="brand" href="${rel}index.html">Fight <span>Sims</span></a>
+  <a class="brand" href="${rel}index.html">${MARK}Fight Sims</a>
   <nav><a href="${rel}index.html#bosses">Bosses</a><a href="${rel}index.html#how">How to use</a><a href="${rel}methodology.html">Methodology</a><a href="${RAID.repo}">GitHub</a></nav>
 </div></header>
 <main class="wrap">
@@ -58,9 +68,7 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
   setTimeout(() => (b.textContent = 'Copy'), 1800);
 }));
 </script>
-</body>
-</html>
-`;
+${fragment ? '' : '</body>\n</html>\n'}`;
 }
 
 const HOWTO = `<ol class="steps">
@@ -198,8 +206,8 @@ function bossPage(b, diff, d) {
   ];
   const kills = A.kills.slice().sort((x, y) => x.duration - y.duration);
   const body = `
-<p class="muted" style="margin-top:28px"><a href="../index.html#bosses">${esc(RAID.raid)}</a></p>
-<h1 style="margin-top:4px">${esc(b.name)}</h1>
+<p class="eyebrow"><a href="../index.html#bosses">${esc(RAID.raid)}</a> &middot; boss ${BOSSES.indexOf(b) + 1} of ${BOSSES.length}</p>
+<h1 style="margin-top:8px">${esc(b.name)}</h1>
 <div class="diff-switch">${other}</div>
 <div class="chips">${chips.map(c => `<span class="chip">${c}</span>`).join('')}</div>
 ${C.notes ? `<p class="lede" style="margin-top:12px">${C.notes}</p>` : ''}
@@ -227,20 +235,61 @@ ${castRows(d)}
 ${kills.map(k => `<tr><td>${esc(k.guild || '-')}</td><td>${esc(k.region || '')}</td><td class="num">${mmss(k.duration)}</td><td><a href="https://www.warcraftlogs.com/reports/${k.code}?fight=${k.fid}">${k.code}</a></td></tr>`).join('\n')}
 </tbody></table></div></details>
 `;
-  return layout(`${b.name} (${diff}) fight profile`, body, { rel: '../', desc: `Measured SimulationCraft fight profile for ${b.name} on ${diff}, from ${A.sample} Warcraft Logs kills.` });
+  return layout(`${b.name} (${diff[0].toUpperCase() + diff.slice(1)})`, body, { rel: '../', desc: `Measured SimulationCraft fight profile for ${b.name} on ${diff}, from ${A.sample} Warcraft Logs kills.` });
 }
 
-function index(all) {
-  const cards = BOSSES.map(b => {
+// ---------- compact fight strip: when there is something to hit, damage windows, adds, and who has to move.
+// Drawn to the same time scale as the boss page's timeline.
+function stripRows(d, X, y) {
+  const { E } = d; const T = E.maxTime; const o = [];
+  // target available = at least one simulated boss not away
+  const gaps = []; const step = 0.5;
+  for (let t = 0; t < T; t += step) {
+    const allAway = E.bosses.every(b => E.events.some(e => e.kind === 'away' && e.name === b && e.t <= t && t < e.t + e.duration));
+    const last = gaps[gaps.length - 1];
+    if (allAway) { if (last && last[1] >= t - step / 2) last[1] = t + step; else gaps.push([t, t + step]); }
+  }
+  o.push(`<rect x="${X(0)}" y="${y + 9}" width="${X(T) - X(0)}" height="8" rx="2" fill="var(--accent)" opacity="0.75"/>`);
+  for (const [a, b] of gaps) o.push(`<rect x="${X(a)}" y="${y + 8}" width="${Math.max(1, X(b) - X(a))}" height="10" fill="var(--surface)"/>`);
+  for (const e of E.events.filter(e => e.kind === 'vuln' && e.t < T)) o.push(`<rect x="${X(e.t)}" y="${y + 9}" width="${Math.max(2, X(Math.min(T, e.t + e.duration)) - X(e.t))}" height="8" rx="1" fill="var(--lane-vuln)"/>`);
+  for (const e of E.events.filter(e => e.kind === 'adds' && e.t < T)) o.push(`<rect x="${X(e.t)}" y="${y}" width="${Math.max(2, X(Math.min(T, e.t + e.duration)) - X(e.t))}" height="6" rx="1" fill="var(--lane-adds)"/>`);
+  for (const e of E.events.filter(e => e.kind === 'move' && e.t < T)) o.push(`<rect x="${X(e.t)}" y="${y + (e.role === 'melee' ? 20 : 26)}" width="${Math.max(1.5, X(Math.min(T, e.t + e.duration)) - X(e.t))}" height="4" rx="1" fill="var(--lane-${e.role})"/>`);
+  return o.join('');
+}
+function cardStrip(d) {
+  const W = 320, X = t => W * t / d.E.maxTime;
+  return `<svg class="strip" viewBox="0 0 ${W} 31" role="img" aria-label="Fight overview: targets, damage windows, adds and movement">${stripRows(d, X, 0)}</svg>`;
+}
+// the home page's thesis: Patchwerk against one measured fight, same clock
+function versus(d, name) {
+  const W = 1000, L = 150, T = d.E.maxTime, X = t => L + (W - L - 8) * t / T;
+  const o = [`<svg class="strip" viewBox="0 0 ${W} 112" role="img" aria-label="Patchwerk compared with ${esc(name)}">`];
+  o.push(`<text x="0" y="18" style="font:600 13px var(--font-body);fill:var(--ink)">Patchwerk</text>`);
+  o.push(`<rect x="${X(0)}" y="9" width="${X(T) - X(0)}" height="8" rx="2" fill="var(--accent)" opacity="0.75"/>`);
+  o.push(`<text x="0" y="56" style="font:600 13px var(--font-body);fill:var(--ink)">${esc(name)}</text>`);
+  o.push(stripRows(d, X, 38));
+  for (let t = 0; t <= T; t += 60) o.push(`<text x="${X(t)}" y="106" text-anchor="${t === 0 ? 'start' : 'middle'}" style="font:11px var(--font-mono);fill:var(--muted)">${mmss(t)}</text>`);
+  o.push('</svg>');
+  return o.join('');
+}
+const STRIP_KEY = `<div class="legend"><span><i style="background:var(--accent);opacity:.75"></i>a boss to hit</span><span><i style="background:var(--lane-vuln)"></i>boss takes extra damage</span><span><i style="background:var(--lane-adds)"></i>adds alive</span><span><i style="background:var(--lane-melee)"></i>melee moving</span><span><i style="background:var(--lane-ranged)"></i>ranged moving</span></div>`;
+
+function index(all, opts = {}) {
+  const cards = BOSSES.map((b, i) => {
     const m = all[b.id + '_mythic'], h = all[b.id + '_heroic'];
     const ref = m || h;
-    const facts = ref ? `${ref.E.bosses.length} target${ref.E.bosses.length > 1 ? 's' : ''} &middot; ${ref.E.events.filter(e => e.kind === 'adds').length} add waves &middot; kill ${mmss(ref.E.maxTime)}${m ? ' (M)' : ''}` : 'coming soon';
-    return `<div class="card boss-card"><h3>${esc(b.name)}</h3><div class="facts">${facts}</div><div class="links">
+    const facts = ref ? `${ref.E.bosses.length} target${ref.E.bosses.length > 1 ? 's' : ''} &middot; ${ref.E.events.filter(e => e.kind === 'adds').length} add waves &middot; ${mmss(ref.E.maxTime)} mythic kill` : 'coming soon';
+    return `<div class="boss-card"><div class="order">BOSS ${i + 1} OF ${BOSSES.length}</div><h3>${esc(b.name)}</h3>${ref ? cardStrip(ref) : ''}<div class="facts">${facts}</div><div class="links">
 <a class="btn ${m ? 'primary' : 'off'}" href="bosses/${b.slug}-mythic.html">Mythic</a><a class="btn ${h ? '' : 'off'}" href="bosses/${b.slug}-heroic.html">Heroic</a></div></div>`;
   }).join('\n');
+  const tf = all['3421_mythic'];
   const body = `
+<div class="hero">
+<p class="eyebrow">${esc(RAID.raid)} &middot; patch ${esc(RAID.patch)} &middot; ${Object.keys(all).length} profiles from ${Object.values(all).reduce((s, d) => s + d.A.sample, 0)} kills</p>
 <h1>Sim the fight, not a target dummy.</h1>
-<p class="lede">Raidbots' default fight is Patchwerk: one boss that never moves and never brings adds. These profiles replay every boss of ${esc(RAID.raid)} as it really goes: adds, intermissions, damage windows and movement. Every timing is measured from dozens of real kills on Warcraft Logs.</p>
+<p class="lede">Raidbots' default fight is Patchwerk: one boss that never moves and never brings adds. These profiles replay every boss of ${esc(RAID.raid)} as it really goes: adds, intermissions, damage windows and movement, all measured from real kills on Warcraft Logs.</p>
+${tf ? `<div class="versus"><div class="cap"><span>Same ${mmss(tf.E.maxTime)}, two fights</span><span>Mythic, median kill</span></div>${versus(tf, 'The Twin Fangs')}${STRIP_KEY}</div>` : ''}
+</div>
 
 <h2 id="bosses">Bosses</h2>
 <div class="grid">${cards}</div>
@@ -260,18 +309,21 @@ ${HOWTO}
 </tbody></table></div>
 <p class="small muted" style="margin-top:10px">More on how each number is measured, and what the profiles cannot do, on the <a href="methodology.html">methodology page</a>.</p>
 `;
-  return layout(`Fight Sims: ${RAID.raid} fight profiles for Raidbots`, body, { desc: `Measured SimulationCraft fight profiles for every ${RAID.raid} boss, built from Warcraft Logs kills. Paste into Raidbots' SimC Expert Mode.` });
+  return layout('Fight Sims', body, { fragment: opts.fragment, desc: `Measured SimulationCraft fight profiles for every boss of ${RAID.raid}, built from Warcraft Logs kills. Paste into Raidbots' SimC Expert Mode.` });
 }
 
 function methodology() {
   const body = fs.readFileSync(path.join(ROOT, 'tools', 'methodology.html'), 'utf8');
-  return layout('Methodology: Fight Sims', body, { desc: 'How the fight profiles are measured from Warcraft Logs.' });
+  return layout('Fight Sims methodology', body, { desc: 'How the fight profiles are measured from Warcraft Logs.' });
 }
 
 const all = {};
 fs.mkdirSync(path.join(ROOT, 'docs', 'data'), { recursive: true });
 for (const b of BOSSES) for (const diff of DIFFS) { const d = load(b, diff); if (d) { all[b.id + '_' + diff] = d; fs.copyFileSync(path.join(ROOT, 'data', `${b.id}_${diff}.json`), path.join(ROOT, 'docs', 'data', `${b.id}_${diff}.json`)); fs.writeFileSync(path.join(ROOT, 'docs', 'bosses', `${b.slug}-${diff}.html`), bossPage(b, diff, d)); } }
 fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), index(all));
+// the claude.ai preview wraps its main page in its own skeleton: the same home page without one, beside docs/
+fs.mkdirSync(path.join(ROOT, 'sims', 'preview'), { recursive: true });
+fs.writeFileSync(path.join(ROOT, 'sims', 'preview', 'index.html'), index(all, { fragment: true }));
 if (ex('tools/methodology.html')) fs.writeFileSync(path.join(ROOT, 'docs', 'methodology.html'), methodology());
 fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '');
 console.log('built', Object.keys(all).length, 'boss pages');
